@@ -3,6 +3,8 @@ import { body, validationResult } from 'express-validator';
 import 'dotenv/config';
 import path from 'path';
 
+import { pool } from './utils/database.js';
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const __dirname = import.meta.dirname;
@@ -13,13 +15,13 @@ app.use(express.static('public'));
 const validators =   
   [ 
     // first name
-    body('fname').trim().escape().notEmpty().withMessage('Enter first name').matches(/^[A-Za-z ]+$/).withMessage('Name must not contain number and/or special characters').isLength({min: 3}).withMessage('First name must be at least 3 characters long').bail().isLength({max: 35}).withMessage('First name must be less than 40 characters long'),
+    body('fname').trim().escape().notEmpty().withMessage('Enter first name').matches(/^[A-Za-z ]+$/).withMessage('Name must not contain number and/or special characters').isLength({min: 3}).withMessage('First name must be at least 3 characters long').bail().isLength({max: 40}).withMessage('First name must be less than 40 characters long'),
 
     // middle name
     // body('mname').trim().escape().notEmpty().isAlpha().withMessage('Name must not contain number and/or special characters').isLength({min: 3, max: 20}).withMessage('Middle name must be between 3 and 20 characters long').optional({values: 'falsy'}),
 
     // last name
-    body('lname').trim().escape().notEmpty().withMessage('Enter last name').matches(/^[A-Za-z-]+$/).withMessage('Name must not contain number and/or special characters').isLength({min: 3}).withMessage('Last name must be at least 3 characters long').bail().isLength({max: 25}).withMessage('Last name must be less than 25 characters long'),
+    body('lname').trim().escape().notEmpty().withMessage('Enter last name').matches(/^[A-Za-z-]+$/).withMessage('Name must not contain number and/or special characters').isLength({min: 3}).withMessage('Last name must be at least 3 characters long').bail().isLength({max: 30}).withMessage('Last name must be less than 30 characters long'),
 
     // day
     body('day').trim().escape().isInt({min: 1, max: 31}).withMessage('Enter valid day').isLength({max: 2}).withMessage('Enter valid day'),
@@ -28,46 +30,37 @@ const validators =
     body('month').trim().escape().isInt({min: 1, max: 12}).withMessage('Enter valid month').isLength({max: 2}).withMessage('Enter valid month'),
 
     // year
-    body('year').trim().escape().isInt({min: 1924, max: 2013}).withMessage('Enter valid year').isLength({max: 4}).withMessage('Enter valid year'),
+    body('year').trim().escape().isInt({min: 1914, max: 2013}).withMessage('Enter valid year').isLength({max: 4}).withMessage('Enter valid year'),
 
     // email
     body('email').trim().escape().normalizeEmail().isEmail().withMessage('Enter valid email address').isLength({min:6}).withMessage('Email must be at least 6 characters long').bail().isLength({max:64}).withMessage('Email must be less than 64 characters long'),
 
     // identity document type
     body('id_doc').trim().escape().bail().custom( id => {
-      if ( id === "Zimbabwean ID" ||  id === "Passport") return id;
+      if ( id === "ZimbabweanID" ||  id === "Passport") return id;
       throw new Error('Select identity document');
     }),
 
     // identity document number
-    body('id_no').trim().escape().notEmpty().withMessage('Enter your identity number').bail().isLength({min: 6, max: 20}).withMessage('Identity number must be at least 6 characters long').bail().matches(/^[A-Za-z0-9 ]+$/).withMessage('Identity number must not contain special characters'),
+    body('id_no').trim().escape().notEmpty().blacklist(' -').withMessage('Enter your identity number').bail().isLength({min: 6, max: 20}).withMessage('Identity number must be at least 6 characters long').bail().matches(/^[A-Za-z0-9 ]+$/).withMessage('Identity number must not contain special characters'),
 
     // mobile number country code
-    body('country_code_mobile').trim().escape().notEmpty().withMessage('Select country code').bail().isInt().withMessage('Enter valid country code').bail().isLength({min: 1, max:3}).withMessage('Country code must be between 1 and 3 characters long'),
+    body('country_code_mobile').trim().escape().notEmpty().withMessage('Select country code').bail().isInt().withMessage('Enter valid country code').bail().isLength({min: 1, max:4}).withMessage('Country code must be between 1 and 3 characters long'),
 
     // mobile number
     body('mobile_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:12}).withMessage('Mobile number must be between 7 and 12 characters'),
 
     // alternative number country code
-    body('country_code_alt_number').trim().escape().notEmpty().withMessage('Select country code').bail().isInt().withMessage('Enter valid country code').bail().isLength({min: 1, max:3}).withMessage('Country code must be between 1 and 3 characters long').optional({values: 'falsy'}),
+    body('country_code_alt_mobile_number').trim().escape().notEmpty().withMessage('Select country code').bail().isInt().withMessage('Enter valid country code').bail().isLength({min: 1, max:4}).withMessage('Country code must be between 1 and 3 characters long').optional({values: 'falsy'}),
 
     // alternative number
-    body('alt_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').bail().isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:12}).withMessage('Mobile number must be between 7 and 12 characters').optional({values: 'falsy'}),
+    body('alt_mobile_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').bail().isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:12}).withMessage('Mobile number must be between 7 and 12 characters').optional({values: 'falsy'}),
 
     // address line 1
     body('address1').trim().escape().notEmpty().withMessage('Enter your address').bail().isLength({min: 12}).withMessage('Address must be at least 12 characters long').bail().isLength({max: 64}).withMessage('Address must be less than 64 characters').bail().matches(/^[A-Za-z0-9 ]+$/).withMessage('Address must not contain special characters'),
 
     // address line 2
     body('address2').trim().escape().bail().bail().isLength({max: 64}).withMessage('Address must be less than 64 characters').bail().matches(/^[A-Za-z0-9 ]+$/).withMessage('Address must not contain special characters').optional({values: 'falsy'}),
-
-    // emergency contact full name
-    body('emerg_contact_name').trim().escape().notEmpty().withMessage('Enter full name').bail().matches(/^[A-Za-z ]+$/).withMessage('Name must not contain number and/or special characters').bail().isLength({min: 6}).withMessage('Name must be at least 6 characters long').bail().isLength({max: 45}).withMessage('First name must be less than 45 characters long'),
-
-    // emergency contact mobile number country code
-    body('country_code_emerg_contact_mobile').trim().escape().notEmpty().withMessage('Select country code').bail().isInt().withMessage('Enter valid country code').bail().isLength({min: 1, max:3}).withMessage('Country code must be between 1 and 3 characters long'),
-
-    // emergency contact mobile number
-    body('emerg_contact_mobile_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:12}).withMessage('Mobile number must be between 7 and 12 characters'),
 
     // gender
     body('gender').trim().escape().custom( gender => {
@@ -81,8 +74,17 @@ const validators =
       throw new Error('Select the race you are registering for');
     }),
 
+    // emergency contact full name
+    body('emerg_contact_name').trim().escape().notEmpty().withMessage('Enter full name').bail().matches(/^[A-Za-z ]+$/).withMessage('Name must not contain number and/or special characters').bail().isLength({min: 6}).withMessage('Name must be at least 6 characters long').bail().isLength({max: 50}).withMessage('First name must be less than 50 characters long'),
+
+    // emergency contact mobile number country code
+    body('country_code_emerg_contact_mobile').trim().escape().notEmpty().withMessage('Select country code').bail().isInt().withMessage('Enter valid country code').bail().isLength({min: 1, max:4}).withMessage('Country code must be between 1 and 3 characters long'),
+
+    // emergency contact mobile number
+    body('emerg_contact_mobile_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:12}).withMessage('Mobile number must be between 7 and 12 characters'),
+
     // event discovery
-    body('event_discovery').trim().escape().isLength({min: 2}).withMessage('Must be at least 2 characters long').bail().isLength({max: 64}).withMessage('Must be less than 64 characters long').optional({values: 'falsy'}),
+    body('event_discovery').trim().escape().matches(/^[A-Za-z0-9 ]+$/).withMessage('Must not contain special characters').bail().isLength({min: 2}).withMessage('Must be at least 2 characters long').bail().isLength({max: 64}).withMessage('Must be less than 64 characters long').optional({values: 'falsy'}),
 
     // user consent checkboxes
     body('terms_conds').trim().escape().custom( agree => {
@@ -112,7 +114,7 @@ app.post( '/', validators, ( req, res ) => {
   }
 
   res.status(200).json( { 
-    'success': `Successful registration ${data.fname}!`, 
+    'result': `Successful registration ${data.fname}!`, 
     'First name(s)': data.fname, 
     'Middle name': data.mname, 
     'Last name': data.lname,
@@ -122,13 +124,13 @@ app.post( '/', validators, ( req, res ) => {
     'DOB': `${data.day}-${data.month}-${data.year}`,
     'Email': data.email,
     'Identity doc': data.id_doc,
-    'Mobile number': `+${data.country_code_mobile}-${data.mobile_number}`,
-    'Alternate mobile number': `+${ data.country_code_alt_number ? data.country_code_alt_number : '000'}-${ (data.alt_number) ? data.alt_number : '000000000' }`,
+    'Mobile number': `${data.country_code_mobile}-${data.mobile_number}`,
+    'Alternate mobile number': `${ data.country_code_alt_mobile_number ? data.country_code_alt_mobile_number : '000'}-${ (data.alt_mobile_number) ? data.alt_mobile_number : '000000000' }`,
     'Address': data.address1 + ' ' + `${data.address2 ?? undefined}`,
-    'Emergency contact name': data.emerg_contact_name,
-    'Emergency contact mobile': `+${data.country_code_emerg_contact_mobile}-${data.emerg_contact_mobile_number}`,
     'Gender': data.gender,
     'Race category': data.event_category,
+    'Emergency contact name': data.emerg_contact_name,
+    'Emergency contact mobile': `${data.country_code_emerg_contact_mobile}-${data.emerg_contact_mobile_number}`,
     'How did you hear about the event': data.event_discovery,
     'Agreed to terms & conditions': data.terms_conds,
     'Agreed to policy': data.policy,
@@ -139,6 +141,16 @@ app.post( '/', validators, ( req, res ) => {
   // then send to google sheets?? || mysql to google sheets
   // save each entry in a json file
   // ensure logic for category is done here before insert into mysql and google sheets
+});
+
+app.get( '/db', ( req, res ) => {
+  pool.execute( process.env.SELECT_QUERY, ( err, result) => {
+    if (err) throw 'an error occured while executing the pool connection';
+    res.status(200).json(result);
+
+    pool.end( err => { if (err) throw 'an error occured closing the pool' });
+  });
+  
 });
 
 app.listen( PORT, () => console.log(`The server is listening for client requests at http://localhost:${PORT}/`) );

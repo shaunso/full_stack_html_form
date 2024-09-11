@@ -1,3 +1,5 @@
 node_modules/
 .env
 curl -d.txt
+test_queries.txt
+ghm_sandbox.sql
