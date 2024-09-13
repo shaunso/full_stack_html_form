@@ -3,5 +3,4 @@ node_modules/
 curl -d.txt
 test_queries.txt
 ghm_sandbox.sql
-routes/
 credentials.json
