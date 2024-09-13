@@ -3,9 +3,9 @@ CREATE DATABASE gutu_half_marathon;
 CREATE TABLE gutu_half_marathon.registration(
 	id INT NOT NULL AUTO_INCREMENT,
 	date_registered DATETIME DEFAULT CURRENT_TIMESTAMP,
-  race_id VARCHAR(18) DEFAULT (UPPER( (SUBSTR( MD5( RAND() ),1,8) ) ) ),
+  race_id VARCHAR(8),
   lname VARCHAR(50) NOT NULL,
-  fname VARCHAR(50) NOT NULL,
+  fname VARCHAR(80) NOT NULL,
   gender VARCHAR(10) NOT NULL,
   age INT NOT NULL,
   date_of_birth_YYYY_MM_DD DATE NOT NULL,
@@ -16,10 +16,12 @@ CREATE TABLE gutu_half_marathon.registration(
   email VARCHAR(64) NOT NULL,
   address VARCHAR(150) NOT NULL,
   event_category VARCHAR(15) NOT NULL,
-  emerg_contact_name VARCHAR(60) NOT NULL,
+  emerg_contact_name VARCHAR(80) NOT NULL,
   emerg_contact_mobile VARCHAR(20) NOT NULL,
   event_discovery VARCHAR(100),
   user_consent TINYINT NOT NULL,
   UNIQUE KEY(race_id),
   PRIMARY KEY(id)
 );
+
+USE gutu_half_marathon;
