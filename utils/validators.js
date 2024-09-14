@@ -36,13 +36,13 @@ export const validators =
   body('country_code_mobile').trim().escape().notEmpty().withMessage('Select country code').bail().isInt().withMessage('Enter valid country code').bail().isLength({min: 1, max:4}).withMessage('Country code must be between 1 and 3 characters long'),
 
   // mobile number
-  body('mobile_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:12}).withMessage('Mobile number must be between 7 and 12 characters'),
+  body('mobile_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:15}).withMessage('Mobile number must be between 7 and 15 characters'),
 
   // alternative number country code
   body('country_code_alt_mobile_number').trim().escape().notEmpty().withMessage('Select country code').bail().isInt().withMessage('Enter valid country code').bail().isLength({min: 1, max:4}).withMessage('Country code must be between 1 and 3 characters long').optional({values: 'falsy'}),
 
   // alternative number
-  body('alt_mobile_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').bail().isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:12}).withMessage('Mobile number must be between 7 and 12 characters').optional({values: 'falsy'}),
+  body('alt_mobile_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').bail().isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:15}).withMessage('Mobile number must be between 7 and 15characters').optional({values: 'falsy'}),
 
   // address line 1
   body('address1').trim().escape().notEmpty().withMessage('Enter your address').bail().isLength({min: 12}).withMessage('Address must be at least 12 characters long').bail().isLength({max: 64}).withMessage('Address must be less than 64 characters').bail().matches(/^[A-Za-z0-9 ,-]+$/).withMessage('Address must not contain special characters'),
@@ -52,13 +52,13 @@ export const validators =
 
   // gender
   body('gender').trim().escape().custom( gender => {
-    if ( gender === "female" ||  gender === "male") return gender;
+    if ( gender === "Female" ||  gender === "Male") return gender;
     throw new Error('Select your gender');
   }),
 
   // race category
   body('event_category').trim().escape().custom( race => {
-    if ( race === "21km" || race === "10km" || race === "5km" || race === "2km" || race === "wheelchair" || race === "spinners" ) return race;
+    if ( race === "21KM" || race === "10KM" || race === "5KM" || race === "2KM" || race === "wheelchair" || race === "spinners" ) return race;
     throw new Error('Select the race you are registering for');
   }),
 
@@ -69,7 +69,7 @@ export const validators =
   body('country_code_emerg_contact_mobile').trim().escape().notEmpty().withMessage('Select country code').bail().isInt().withMessage('Enter valid country code').bail().isLength({min: 1, max:4}).withMessage('Country code must be between 1 and 3 characters long'),
 
   // emergency contact mobile number
-  body('emerg_contact_mobile_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:12}).withMessage('Mobile number must be between 7 and 12 characters'),
+  body('emerg_contact_mobile_number').trim().escape().blacklist(' -').notEmpty().withMessage('Enter mobile number').isInt().withMessage('Enter valid mobile number').bail().isLength({min: 7, max:15}).withMessage('Mobile number must be between 7 and 15 characters'),
 
   // event discovery
   body('event_discovery').trim().escape().matches(/^[A-Za-z0-9 ]+$/).withMessage('Must not contain special characters').bail().isLength({min: 2}).withMessage('Must be at least 2 characters long').bail().isLength({max: 64}).withMessage('Must be less than 64 characters long').optional({values: 'falsy'}),

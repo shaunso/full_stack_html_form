@@ -57,7 +57,7 @@ router.post( '/', validators, async ( req, res ) => {
       res.status(500).send('<h3> Something went wrong. <a href="/">Please resubmit<a><h3>')
     };
     // res.status(200).json({ userData: usr_info, queryResult: result} );
-    res.status(200).send(`<h1>You have successfully registered for the Dr Simon V Muzenda Gutu Half Marathon 2024 ${fname}. Your reference number is ${race_id}. Please make payment to Ecocash number 0772-210-914</h1>`);
+    res.status(200).send(`<h1>You have successfully registered for the 2024 Dr Simon V Muzenda Gutu Half Marathon ${fname}. Your reference number is ${race_id}. Please make payment to Ecocash number 0772-210-914</h1>`);
 
     // ERROR EXPLAINED: error code 580 returned
     //   the pool appears to be closing and not reopening causing the attempt to connect to mysql to fail

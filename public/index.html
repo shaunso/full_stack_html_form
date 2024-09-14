@@ -62,7 +62,7 @@
         Date of birth:        
         <br>
         <select name="day" id="day" required>
-          <option value="" selected disabled>-dd-</option>
+          <option value="" selected disabled>--DD--</option>
           <option value="01">01</option>
           <option value="02">02</option>
           <option value="03">03</option>
@@ -96,7 +96,7 @@
           <option value="31">31</option>
         </select>
         <select name="month" id="month" required>
-          <option value="" selected disabled>-mm-</option>
+          <option value="" selected disabled>--MM--</option>
           <option value="01">01<span>- (January)</span></option>
           <option value="03">03<span>- (February)</span></option>
           <option value="04">04<span>- (March)</span></option>
@@ -111,7 +111,7 @@
           <option value="12">12<span>- (December)</span></option>
         </select>
         <select name="year" id="year" required>
-          <option value="" selected disabled>-yyyy-</option>
+          <option value="" selected disabled>--YYYY--</option>
           <option value="2013">2013</option>
           <option value="2012">2012</option>
           <option value="2011">2011</option>
@@ -460,7 +460,7 @@
           <option value="996">+996</option>
           <option value="998">+998</option>          
         </select>
-        <input type="tel" name="mobile_number" id="number" required minlength="7" maxlength="12">
+        <input type="tel" name="mobile_number" id="number" required minlength="7" maxlength="15">
         <br>
     
         <!-- Alternative number -->
@@ -686,7 +686,7 @@
           <option value="996">+996</option>
           <option value="998">+998</option>          
         </select>
-        <input type="tel" name="alt_mobile_number" id="alt_mobile_number" minlength="7" maxlength="12">
+        <input type="tel" name="alt_mobile_number" id="alt_mobile_number" minlength="7" maxlength="15">
         <br>
 
         <!-- Address -->
@@ -1001,7 +1001,7 @@
             <option value="996">+996</option>
             <option value="998">+998</option>          
           </select>  
-          <input type="tel" name="emerg_contact_mobile_number" id="emerg_contact_mobile_number" required minlength="8" maxlength="15">
+          <input type="tel" name="emerg_contact_mobile_number" id="emerg_contact_mobile_number" required minlength="7" maxlength="15">
           <br>
         </li>    
       </fieldset>
