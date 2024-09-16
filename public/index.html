@@ -62,7 +62,7 @@
         Date of birth:        
         <br>
         <select name="day" id="day" required>
-          <option value="" selected disabled>--DD--</option>
+          <option value="" selected disabled>-- DD --</option>
           <option value="01">01</option>
           <option value="02">02</option>
           <option value="03">03</option>
@@ -96,7 +96,7 @@
           <option value="31">31</option>
         </select>
         <select name="month" id="month" required>
-          <option value="" selected disabled>--MM--</option>
+          <option value="" selected disabled>-- MM --</option>
           <option value="01">01<span>- (January)</span></option>
           <option value="03">03<span>- (February)</span></option>
           <option value="04">04<span>- (March)</span></option>
@@ -111,7 +111,7 @@
           <option value="12">12<span>- (December)</span></option>
         </select>
         <select name="year" id="year" required>
-          <option value="" selected disabled>--YYYY--</option>
+          <option value="" selected disabled>-- YYYY --</option>
           <option value="2013">2013</option>
           <option value="2012">2012</option>
           <option value="2011">2011</option>
@@ -214,22 +214,26 @@
           <option value="1923">1914</option>
         </select>
         <br>
-        
-        <!-- Email -->
-        <label for="email">
-          Email:
+            
+        <!-- Gender -->
+        <label for="gender">
+          Gender:
         </label>
         <br>
-        <input type="email" name="email" id="email" required minlength="6" maxlength="64">
-        <br>
-    
+        <select name="gender" id="gender" required>
+          <option value="" disabled selected>-- select gender--</option>
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+        </select>
+        <br>  
+
         <!-- ID -->
         <label for="identification">
           Identification number:
         </label>
         <br>
         <select name="id_doc" id="identification" required>
-          <option value="" selected disabled>--select identity document--</option>
+          <option value="" selected disabled>-- select identity document type --</option>
           <option value="Zimbabwean ID">Zimbabwean ID number</option>
           <option value="Passport">Passport number</option>
         </select>
@@ -688,6 +692,14 @@
         </select>
         <input type="tel" name="alt_mobile_number" id="alt_mobile_number" minlength="7" maxlength="15">
         <br>
+                        
+        <!-- Email -->
+        <label for="email">
+          Email:
+        </label>
+        <br>
+        <input type="email" name="email" id="email" required minlength="6" maxlength="64">
+        <br>    
 
         <!-- Address -->
         <label for="address1">
@@ -702,18 +714,6 @@
         <br>
         <input type="text" name="address2" id="address2" maxlength="64">
         <br>        
-    
-        <!-- Gender -->
-        <label for="gender">
-          Gender:
-        </label>
-        <br>
-        <select name="gender" id="gender" required>
-          <option value="" disabled selected>--select--</option>
-          <option value="Female">Female</option>
-          <option value="Male">Male</option>
-        </select>
-        <br>  
       </fieldset>
   
       <!-- Race category -->
@@ -1008,12 +1008,12 @@
       
       <!-- Event discovery -->
       <label for="event_discovery">
-        How did you hear about this event?
+        How did you hear about this event?<br>
+        (Facebook, Whatsapp, radio, TV, banner, word of mouth, advert, newspaper, previous participant, Google, etc.)
       </label>
       <br>
       <input type="text" name="event_discovery" id="event_discovery">
       <br>
-      (Whatsapp, Facebook, word of mouth, radio, tv, advert, newspaper, previous participant, search engine, etc.)      
   
       <!-- Consent -->
       <fieldset>
