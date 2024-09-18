@@ -6,7 +6,7 @@ import homeRouter from './routes/index.js'
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.urlencoded({extended: true}, {limit: 10}));
+app.use(express.urlencoded({extended: true}, {limit: 100}));
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs')
