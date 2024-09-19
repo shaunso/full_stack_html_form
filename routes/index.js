@@ -28,12 +28,11 @@ router.post( '/', validators, async ( req, res ) => {
   if ( !errors.isEmpty() ) return res.status(400).render('submission_failure', { data: data, errors: errors.array() });
   
   // object destructing used to get user data for each field
-  const { fname, lname, day, month, year, gender, id_doc_typ, id_doc_no,country_code_mobile, mobile_number, country_code_alt_mobile_number, alt_mobile_number, email, address1, address2, event_category, emerg_contact_name, emerg_contact_country_code_mobile, emerg_contact_mobile_number, event_discovery, terms_conds, policy, communication } = req.body;
+  const { fname, lname, day, month, year, gender, id_doc_typ, id_doc_no,country_code_mobile, mobile_number, country_code_alt_mobile_number, alt_mobile_number, email, address, event_category, emerg_contact_name, emerg_contact_country_code_mobile, emerg_contact_mobile_number, event_discovery, terms_conds, policy, communication } = req.body;
 
   // formatting data to ensure it is in the way mysql expects it to be
   const race_id = raceID();
   const dob = `${year}-${month}-${day}`;
-  const address = address1 + ( address2 === '' ? '' : ` ${address2}`);
   const usr_mobile_num = `+${country_code_mobile}-${mobile_number}`;
   const usr_alt_mobile_num = (alt_mobile_number === '') ? null : `+${country_code_alt_mobile_number}-${alt_mobile_number}`;
   const usr_emerg_cont_num = `+${emerg_contact_country_code_mobile}-${emerg_contact_mobile_number}`;

@@ -1,5 +1,11 @@
 :root {
-
+  --primary-color: #4891ff;
+  --light-color: hsl(216, 7%, 86%);
+  --dark-color: #0a0808;
+  --asterisk: hsl(348, 89%, 48%);
+  --grey: hsl(0, 0%, 20%);
+  --white: hsl(15, 20%, 98%);
+  --font: "Poppins",Arial, Helvetica, sans-serif;
 }
 
 * {
@@ -9,12 +15,336 @@
 }
 
 body {
-  background-color: hsla(180, 20%, 68%, 0.429);
-  font-family: "Poppins",Arial, Helvetica, sans-serif;
+  background-color: hsl(0, 0%, 96%);
+  color: var(--dark-color);
+  font-family: var(--font);
+  line-height: 1.5;
+  overflow-x: hidden;
+  font-size: 16px;
+  text-anchor: end;
 }
 
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+}
+
+input[type="checkbox"] {
+  height: 1.35rem;
+  width: fit-content;
+}
+
+input[type="radio"] {
+  /* height: 1.85rem;  */
+  width: 1.5rem;
+}
+
+/* header */
+header {
+  width: min(90%, 950px);
+  margin: 5rem auto 6rem auto;
+}
+
+h1.event-name {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 7.5px;
+  word-spacing: 15px;
+  line-height: 1.2;
+}
+
+p.theme {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-style: italic;
+  text-transform: capitalize;
+  color: var(--grey);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* form container */
 #container {
   width: min(90%, 950px);
-  margin: 5rem auto;
-  background-color: antiquewhite;
+  margin: 2rem auto 4.5rem auto;
+  background-color: rgba(240, 235, 226, 0.607);
+  padding: 4rem 6rem;
+  border-radius: 30px;
+  box-shadow: 2px 2px 2px rgba(0 ,0 ,0 , 0.05),
+  -2px -2px 2px rgba(0 ,0 ,0 , 0.05);
+}
+
+/* form header  */
+.container-form-header {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 3rem;
+  margin-bottom: 1.75rem;
+  row-gap: 2rem;
+}
+
+.container-form-header > p {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+
+.container-form-header div {
+  width: 50%;
+  font-weight: 300;
+  color: var(--grey);
+}
+
+.container-form-header div:last-child {
+  width: 50%;
+  text-align: end;
+}
+
+.container-form-instructions {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--grey);
+  font-size: 1.15rem;
+}
+
+.container-form-instructions span {
+  color: var(--asterisk);
+  font-weight: 300;
+}
+
+/* second horizontal rule */
+hr.two {
+  opacity: 35%;
+}
+
+/* form fields */
+form * {
+  width: 100%;
+  letter-spacing: 0.65px;
+  font-weight: 500;
+  font-size: 1.075rem;
+  display: block;
+}
+
+fieldset {
+  border: none;
+}
+
+fieldset > div, div#event-discovery {
+  margin-bottom: 1.85rem;
+}
+
+label {
+  margin-bottom: 0.35rem;
+}
+
+input, textarea {
+  height: 3rem;
+  padding: 1.2rem;
+  border: solid var(--light-color) 3px;
+  background-color: var(--white);
+  border-radius: 5px;
+  font-family: var(--font);
+  font-weight: 400;
+}
+
+/* first name */
+div#first-name {
+  margin-top: 2rem;
+}
+
+/* date of birth */
+div#date-of-birth {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 3rem;
+}
+
+div#date-of-birth label {
+  width: 100%;
+}
+
+select[id="day"], select[id="month"], select[id="year"] {
+  width: 15ch;
+}
+
+option {
+  text-align: right;
+}
+
+/* gender */
+select[id="gender"] {
+  width: 25ch;
+}
+
+/* id */
+select[id="id_doc_typ"] {
+  width: 45ch;
+  margin-bottom: 0.75rem;
+}
+/* mobile number */
+div#mobile-number, div#alt-mobile-number, div#emerg-contact-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.5rem;
+}
+label[for="mobile-number"], label[for="alt_mobile_number"], label[for="emerg_contact_country_code_mobile"] {
+  width: 100%;
+}
+select[id="country_code_mobile"], select[id="country_code_alt_mobile_number"], select[id="emerg_contact_country_code_mobile"] {
+  width: 7.5ch;
+}
+input[id="number"], input[id="alt_mobile_number"], input[id="emerg_contact_mobile_number"] {
+  width: 75%;
+  flex-grow: 1;
+}
+
+/* address */
+textarea {
+  resize: none;
+  overflow: hidden;
+  height: 9rem;
+}
+
+/* race category */
+legend.event-category {
+  margin-top: 1.85rem;
+  color: var(--grey);
+  font-weight: 500;;
+}
+
+/* div#event-category p {
+  display: inline;
+} */
+
+div#event-category > ul:first-child {
+  margin-bottom: 3rem;
+}
+
+div#event-category > ul > li {
+  display: flex;
+  column-gap: 3rem;
+  border-bottom: #0a0808 dotted 4px;
+}
+
+div#event-category > ul > li span {
+  font-size: x-small;
+  display: inline;
+}
+
+div#event-category > ul label {
+  display: flex;
+  align-items: center;
+}
+
+div#event-category  > ul label:hover, input[type="radio"]:hover {
+  cursor: pointer;
+}
+
+/* emergency contact */
+div#emerg-contact {
+  margin: 1.85rem 0;
+}
+
+div#emerg-contact-name {
+  margin-bottom: 1rem;
+}
+
+div#emerg-contact-mobile {
+  margin-bottom: 0;
+}
+
+legend.emerg-contact {
+  font-size: larger;
+  color: var(--grey);
+}
+
+/* event discovery */
+div#event-discovery {
+ margin-top: 1.85rem;
+}
+
+p.text-sm-it {
+  color: var(--grey);
+  font-size: x-small;
+  font-style: italic;
+  text-transform: none;
+}
+
+/* user consent */
+div#usr-consent > fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+div#usr-consent > fieldset > li {
+  display: flex;
+  /* align-items: center; */
+  column-gap: 1rem;
+  color: var(--grey);
+}
+
+div#usr-consent > fieldset > li > label, div#usr-consent a {
+  font-size: 14px;
+}
+
+div#usr-consent a {
+  display: inline;
+  color: var(--primary-color);
+}
+
+/* button */
+button {
+  margin-top: 2.5rem;
+  height: 4rem;
+  border: none;
+  border-radius: 10px;
+  background-color: hsl(145, 62%, 53%);
+  color: var(--white);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.25px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: hsl(145, 59%, 46%);
+}
+/* footer */
+div#container-footer {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  height: 6vw;
+  padding: 0 6rem;
+}
+
+div#container-footer > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+div#container-footer > ul >  li:nth-child(2) {
+  font-size: larger;
+}
+
+/* select */
+select {
+  height: 3rem;
+  text-align: center;
+  background-color: var(--white);
+  border: var(--light-color) solid 3px;
+  border-radius: 5px;
+  font-family: var(--font);
+  font-weight: 400;
 }

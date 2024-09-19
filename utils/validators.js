@@ -47,11 +47,8 @@ export const validators =
   // email
   body('email').trim().escape().normalizeEmail().isEmail().withMessage('Enter valid email address').isLength({min:6}).withMessage('Email must contain 6 or more characters').bail().isLength({max:64}).withMessage('Email must contain 64 or less characters'),
 
-  // address line 1
-  body('address1').trim().escape().notEmpty().withMessage('Address cannot be left blank').bail().isLength({min: 12}).withMessage('Address must contain 12 or more characters').bail().isLength({max: 64}).withMessage('Address must contain 64 or less characters').bail().matches(/^[A-Za-z0-9 ,-]+$/).withMessage('Address must only contain letters and numbers'),
-
-  // address line 2
-  body('address2').trim().escape().isLength({max: 64}).withMessage('Address must contain 64 or less characters').bail().matches(/^[A-Za-z0-9 ,-]+$/).withMessage('Address must only contain letters and numbers').optional({values: 'falsy'}),
+  // address
+  body('address').trim().escape().notEmpty().withMessage('Address cannot be left blank').bail().isLength({min: 12}).withMessage('Address must contain 12 or more characters').bail().isLength({max: 64}).withMessage('Address must contain 64 or less characters').bail().matches(/^[A-Za-z0-9 ,-]+$/).withMessage('Address must only contain letters and numbers'),
 
   // race category
   body('event_category').trim().escape().notEmpty().withMessage('Select the race you are entering').custom( race => {
