@@ -34,10 +34,10 @@
     <div class="container-form-header">
       <p>Entry form</p>
       <div>
-        <i class="fa-solid fa-calendar-days"></i>
+        <i class="fa-solid fa-calendar-days" style="color: hsl(0, 0%, 20%)"></i>
         Sunday, 2 November 2024</div>
       <div>
-        <i class="fa-solid fa-location-dot"></i>
+        <i class="fa-solid fa-location-dot" style="color: hsl(0, 0%, 20%)"></i>
         Gutu, Masvingo Province</div>
     </div>
 
@@ -64,17 +64,19 @@
       <fieldset>
         <!-- First name -->
         <div id="first-name">
-          <label for="fname">
-            First name(s):
-          </label>
-  
-          <input type="text" name="fname" id="fname" required minlength="3" maxlength="40" pattern="[a-zA-Z ]{3,40}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('First name must contain 3 or more letters')">
+          <div>
+            <label for="fname" class="required">
+              First name(s):
+            </label>
+    
+            <input type="text" name="fname" id="fname" required minlength="3" maxlength="40" pattern="[a-zA-Z ]{3,40}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('First name must contain 3 or more letters')">
+          </div>
         </div>
 
         
         <!-- Last names -->
         <div id="last-name">
-          <label for="lname">
+          <label for="lname" class="required">
             Last name:
           </label>
   
@@ -84,7 +86,7 @@
     
         <!-- Date of birth -->
         <div id="date-of-birth">
-          <label for="dob"><p>Date of birth:</p> </label>  
+          <label for="dob" class="required">Date of birth:</label>  
 
           <select name="day" id="day" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select day of birth')" title="Select day of birth">
             <option value="" selected disabled>-- DD --</option>
@@ -240,12 +242,10 @@
             <option value="1923">1914</option>
           </select>
         </div>
-
-
             
         <!-- Gender -->
         <div id="gender">
-          <label for="gender">
+          <label for="gender" class="required">
             Gender:
           </label>
   
@@ -258,7 +258,7 @@
   
         <!-- ID -->
         <div id="id">
-          <label for="id_doc_typ">
+          <label for="id_doc_typ" class="required">
             Identity document type:
           </label>
   
@@ -268,15 +268,16 @@
             <option value="Passport">Passport number</option>
           </select>
   
-          <label for="id_doc_no"></label>
-            Identity document number:
+          <label for="id_doc_no" class="required">
+            Identity document number:            
           </label>
+
           <input type="text" name="id_doc_no" id="id" required minlength="6" maxlength="20" pattern="[a-zA-Z0-9 ]{6,20}"  title="Identification document number must contain 3 or more letters">
         </div>
     
         <!-- Mobile number -->
         <div id="mobile-number">
-          <label for="number">
+          <label for="number" class="required">
             Mobile number:
           </label>
   
@@ -733,7 +734,7 @@
                         
         <!-- Email -->
         <div id="email">
-          <label for="email">
+          <label for="email" class="required">
             Email:
           </label>
   
@@ -742,7 +743,7 @@
 
         <!-- Address -->
         <div id="address">
-          <label for="address">
+          <label for="address" class="required">
             Address:
           </label>
   
@@ -754,7 +755,7 @@
   
       <!-- Race category -->
       <fieldset>
-        <legend class="event-category">Select event you are entering:</legend>
+        <legend class="event-category required">Select the event you are entering: </legend>
         <div id="event-category">
           <ul>
             <li>
@@ -769,7 +770,8 @@
               <input type="radio" name="event_category" id="10km" value="10KM">
               <label for="10km">
                 <p>10KM</p>
-                <p>17-19 & 60+ <span>years</span></p>                
+                <p>17-19 <span>years</span><br>
+                  60+ <span>years</span>
                 <p>US$5</p>
               </label>
             </li>
@@ -795,7 +797,7 @@
               <label for="wheelchair">
                 <p>Wheelchair</p>
                 <p>open</p>
-                <p>US$10</p>
+                <p>US$5</p>
               </label>
             </li>
 
@@ -804,10 +806,10 @@
               <label for="spinners">
                 <p>Spinners</p>
                 <p>open</p>
-                <p>US$10</p>
+                <p>US$5</p>
               </label>
             </li>
-          </ul>
+          </ul
         </div>
       </fieldset>
 
@@ -818,7 +820,7 @@
         <fieldset>
           <legend class="emerg-contact">Emergency contact details:</legend>
           <div id="emerg-contact-name">
-            <label for="emerg_contact_name">
+            <label for="emerg_contact_name" class="required">
               Contact full name:
             </label>
     
@@ -826,7 +828,7 @@
           </div>
         
           <div id="emerg-contact-mobile">
-            <label for="emerg_contact_country_code_mobile">
+            <label for="emerg_contact_country_code_mobile" class="required">
               Contact mobile number:
             </label>
     
@@ -1076,21 +1078,21 @@
         <fieldset>
           <li>
             <input type="checkbox" name="terms_conds" id="terms_conds" value="TRUE" required  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
-            <label for="terms_conds">
+            <label for="terms_conds" class="required-bf">
               I acknowledge that I have read and accept Dr Simon V Muzenda Gutu Half Marathon's race entry <a href="policy.html" target="_blank">terms and conditions</a>
             </label>
     
           </li>
           <li>
             <input type="checkbox" name="policy" id="policy" value="TRUE" required  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
-            <label for="policy">
+            <label for="policy" class="required-bf">
               I acknowledge that I have read and accept Dr Simon V Muzenda Gutu Half Marathon's <a href="policy.html" target="_blank">limitation of indemnity, liability, privacy and refund policy</a>
               </label>
       
           </li>
           <li>
             <input type="checkbox" name="communication" id="communication" value="TRUE" required  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
-            <label for="communication">
+            <label for="communication" class="required-bf">
               By entering and registering for a race for the Dr Simon V Muzenda Gutu Half Marathon, I agree to be contacted via email, sms and/or  whatsapp with important information about the race itself.
             </label>
     
@@ -1107,17 +1109,28 @@
   <!--  -->
   <footer>
     <div id="container-footer">
-      <ul>
-        <li>
-          contact@gutuhalfmarathon.co.zw
-        </li>
-        <li>
-          &copy; Dr Simon V Muzenda Gutu Half Marathon 2024
-        </li>
-        <li>
-          +263-779-291-001
-        </li>
-      </ul>
+      <div id="socials">
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-tiktok"></i>
+        <p>gutu.half.marathon</p>
+      </div>
+
+      <p>
+        &copy; Dr Simon V Muzenda Gutu Half Marathon 2024
+      </p>
+
+      <div id="contact">
+        <p>Get in touch</p>
+        <ul>
+          <li>
+            contact@gutuhalfmarathon.co.zw
+          </li>
+           <!-- <li>
+            +263-779-291-001
+          </li> -->
+        </ul>
+      </div>
     </div>
   </footer>
 </body>

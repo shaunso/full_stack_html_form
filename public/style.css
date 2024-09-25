@@ -22,6 +22,7 @@ body {
   overflow-x: hidden;
   font-size: 16px;
   text-anchor: end;
+  /* vertical-align: baseline; */
 }
 
 a {
@@ -39,7 +40,7 @@ input[type="checkbox"] {
 }
 
 input[type="radio"] {
-  /* height: 1.85rem;  */
+  margin-left: 1.5rem;
   width: 1.5rem;
 }
 
@@ -118,7 +119,6 @@ p.theme {
 
 .container-form-instructions span {
   color: var(--asterisk);
-  font-weight: 300;
 }
 
 /* second horizontal rule */
@@ -191,6 +191,7 @@ select[id="id_doc_typ"] {
   width: 45ch;
   margin-bottom: 0.75rem;
 }
+
 /* mobile number */
 div#mobile-number, div#alt-mobile-number, div#emerg-contact-mobile {
   display: flex;
@@ -216,34 +217,42 @@ textarea {
 }
 
 /* race category */
+div#event-category {
+  padding: 0 2rem;
+}
 legend.event-category {
   margin-top: 1.85rem;
   color: var(--grey);
-  font-weight: 500;;
-}
-
-/* div#event-category p {
-  display: inline;
-} */
-
-div#event-category > ul:first-child {
-  margin-bottom: 3rem;
+  font-weight: 500;
+  width: fit-content;
 }
 
 div#event-category > ul > li {
   display: flex;
   column-gap: 3rem;
-  border-bottom: #0a0808 dotted 4px;
+  border-bottom: var(--grey) dotted 2px;
+  margin-top: 8px;
+}
+
+div#event-category > ul:first-child {
+  margin: 1.75rem 0 3rem 0;
+}
+
+div#event-category > ul > li p:not(:first-child) {  
+  font-weight: 300;
 }
 
 div#event-category > ul > li span {
   font-size: x-small;
+  font-weight: 200;
   display: inline;
 }
 
 div#event-category > ul label {
   display: flex;
+  column-gap: 1rem;
   align-items: center;
+  justify-content: flex-start;
 }
 
 div#event-category  > ul label:hover, input[type="radio"]:hover {
@@ -320,24 +329,40 @@ button:hover {
   background-color: hsl(145, 59%, 46%);
 }
 /* footer */
+footer {
+  height: 5vh;
+}
+
 div#container-footer {
   background-color: var(--dark-color);
   color: var(--light-color);
-  height: 6vw;
-  padding: 0 6rem;
-}
-
-div#container-footer > ul {
+  padding: 1.5rem 6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+div#container-footer > div#socials {
+  display: flex;
+  column-gap: 0.6rem;
+  align-items: center;
+}
+
+div#container-footer > p {
+  font-size: 1.2rem;
+}
+
+div#container-footer > div#contact {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  justify-content: center;
 }
 
-div#container-footer > ul >  li:nth-child(2) {
-  font-size: larger;
+div#container-footer > div#contact > p {
+  font-weight: 600;
+  text-transform: uppercase;
 }
-
 /* select */
 select {
   height: 3rem;
@@ -347,4 +372,17 @@ select {
   border-radius: 5px;
   font-family: var(--font);
   font-weight: 400;
+}
+
+/* required class  */
+.required::after {
+  content: '*';
+  color: var(--asterisk);
+  display: inline;
+}
+
+.required-bf::before {
+  content: '*';
+  color: var(--asterisk);
+  display: inline;
 }
