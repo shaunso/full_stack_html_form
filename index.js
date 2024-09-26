@@ -4,7 +4,7 @@ import 'dotenv/config';
 import homeRouter from './routes/index.js'
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 app.use(express.urlencoded({extended: true}, {limit: 100}));
 app.use(express.static('public'));
