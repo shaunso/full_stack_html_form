@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <!-- icons -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css" integrity="sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    
   <title>Entry Form | Umsweswe Donsa Ultra Marathon 2025</title>
 </head>
@@ -34,11 +34,12 @@
     <div class="container-form-header">
       <p>Entry form</p>
       <div>
-        <i class="fa-solid fa-calendar-days" style="color: hsl(0, 0%, 20%)"></i>
+       <i class="fa-solid fa-calendar-days" style="color: hsl(0, 0%, 20%)"></i>
         Saturday, 15 March 2025</div>
       <div>
         <i class="fa-solid fa-location-dot" style="color: hsl(0, 0%, 20%)"></i>
-        Umsweswe, Mashonaland West</div>
+        Umsweswe</div>
+        </a>  
     </div>
 
     <hr>
@@ -87,12 +88,12 @@
         <!-- Date of birth -->
         <div id="date-of-birth">
           <label for="dob" class="required">Date of birth:</label>  
-
-          <select name="day" id="day" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select day of birth')" title="Select day of birth">
+          <div id="birthday"> 
+           <select name="day" id="day" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select day of birth')" title="Select day of birth">
             <option value="" selected disabled>-- DD --</option>
             <option value="01">01</option>
             <option value="02">02</option>
-            <option value="03">03</option>
+             <option value="03">03</option>
             <option value="04">04</option>
             <option value="05">05</option>
             <option value="06">06</option>
@@ -121,8 +122,8 @@
             <option value="29">29</option>
             <option value="30">30</option>
             <option value="31">31</option>
-          </select>
-          <select name="month" id="month" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select month of birth')" title="Select month of birth">
+           </select>
+           <select name="month" id="month" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select month of birth')" title="Select month of birth">
             <option value="" selected disabled>-- MM --</option>
             <option value="01">01</option>
             <option value="03">02</option>
@@ -136,9 +137,9 @@
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
-          </select>
+           </select>
   
-          <select name="year" id="year" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select year of birth')" title="Select year of birth">
+           <select name="year" id="year" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select year of birth')" title="Select year of birth">
             <option value="" selected disabled>-- YYYY --</option>
             <option value="2013">2013</option>
             <option value="2012">2012</option>
@@ -240,7 +241,8 @@
             <option value="1923">1916</option>
             <option value="1923">1915</option>
             <option value="1923">1914</option>
-          </select>
+           </select>
+          </div>
         </div>
             
         <!-- Gender -->
@@ -752,25 +754,25 @@
       <hr class="two">
   
       <!-- Race category -->
-      <fieldset>
+      <fieldset class="event-category">
         <legend class="event-category required">Select the event you are entering: </legend>
         <div id="event-category">
           <ul>
-            <li>
+            <li class="radio-btn">
               <input type="radio" name="event_category" id="21km" value="21KM" required>
               <label for="21km">
                 <p>21KM</p>
-                <p>US$10</p>
+                <p>US$25</p>
               </label>
             </li>
-            <li>
+            <li class="radio-btn">
               <input type="radio" name="event_category" id="10km" value="10KM">
               <label for="10km">
                 <p>10KM</p>
-                <p>US$5</p>
+                <p>US$15</p>
               </label>
             </li>
-            <li>
+            <li class="radio-btn">
               <input type="radio" name="event_category" id="5km" value="5KM">
               <label for="5km">
                 <p>5KM</p>         
@@ -1039,11 +1041,12 @@
         
         <input type="text" name="event_discovery" id="event_discovery" pattern="[A-Za-z0-9 ,-]{12,64}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Field must contain 12 or more letters')" title="Field must contain 12 or more letters">      
       </div>
+
+      <hr class="two">
   
       <!-- Consent -->
       <div id="usr-consent">
-        Rules & terms
-        You must accept the terms and conditions to participate. 
+        <p>Rules, policys, terms and conditions you must accept to participate. </p>
         <fieldset>
           <li>
             <input type="checkbox" name="terms_conds" id="terms_conds" value="TRUE" required  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
@@ -1074,24 +1077,24 @@
   </section>
     </div>
   </main>
-
-  <!--  -->
+  <!-- footer -->
   <footer>
     <div id="container-footer">
+      <!-- icons won't load on iOS if ad blocker is on -->
       <div id="socials">
-        <a href="#">
+        <a href="javascript:void(0);">
           <i class="fa-brands fa-facebook"></i>
         </a>
-        <a href="#">
+        <a href="javascript:void(0);">
           <i class="fa-brands fa-instagram"></i>
         </a>
-        <a href="#">
+        <a href="javascript:void(0);">
           <i class="fa-brands fa-tiktok"></i>
         </a>              
       </div>
 
       <p>
-        &copy; Umsweswe Donsa Ultra Marathon 2025
+        &copy; 2025 Umsweswe Donsa Ultra Marathon. All rights reserved.
       </p>
 
       <div id="contact">
@@ -1100,12 +1103,11 @@
           <li>
             enquiries@udmarathon.co.zw
           </li>
-           <!-- <li>
-            +263-779-291-001
-          </li> -->
         </ul>
       </div>
     </div>
   </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
