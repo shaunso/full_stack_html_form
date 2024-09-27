@@ -4,7 +4,7 @@
 
 - HTMl form that accepts and stores user input on successful submission.
 
-- FRONT-END: vanilla HTML, CSS
+- FRONT-END: vanilla HTML, CSS, JavaScript
 - BACK-END: NodeJS, ExpressJS, MySQL, EJS
 
 - portfolio project demonstrating my fullstack developer skills with a HTML form that executes create, read & update functions to the database

@@ -40,18 +40,19 @@ input[type="checkbox"] {
 }
 
 input[type="radio"] {
-  margin-left: 1.5rem;
-  width: 1.5rem;
+  width: 2.5rem;
+  opacity: 0;
+  /* type */
 }
 
 /* header */
 header {
   width: min(90%, 950px);
-  margin: 5rem auto 6rem auto;
+  margin: 3.5rem auto;
+  font-size: 2rem;
 }
 
 h1.event-name {
-  font-size: 3.5rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 7.5px;
@@ -61,7 +62,7 @@ h1.event-name {
 
 p.theme {
   margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.25em;
   font-weight: 300;
   font-style: italic;
   color: var(--grey);
@@ -73,7 +74,7 @@ p.theme {
   width: min(90%, 950px);
   margin: 2rem auto 4.5rem auto;
   background-color: rgba(240, 235, 226, 0.607);
-  padding: 4rem 6rem;
+  padding: 2.25rem 6rem;
   border-radius: 30px;
   box-shadow: 2px 2px 2px rgba(0 ,0 ,0 , 0.05),
   -2px -2px 2px rgba(0 ,0 ,0 , 0.05);
@@ -92,7 +93,7 @@ p.theme {
   width: 100%;
   text-align: center;
   font-weight: 600;
-  font-size: 2.2rem;
+  font-size: 3rem;
   text-transform: uppercase;
 }
 
@@ -140,10 +141,6 @@ fieldset {
 
 fieldset > div, div#event-discovery {
   margin-bottom: 1.85rem;
-}
-
-label {
-  margin-bottom: 0.35rem;
 }
 
 input, textarea {
@@ -199,9 +196,6 @@ textarea {
 }
 
 /* race category */
-div#event-category {
-  padding: 0 2rem;
-}
 legend.event-category {
   margin-top: 1.85rem;
   color: var(--grey);
@@ -209,11 +203,16 @@ legend.event-category {
   width: fit-content;
 }
 
+div#event-category > ul {
+  display: flex;
+  width: 100%;
+  column-gap: 0.5rem;
+}
+
 div#event-category > ul > li {
   display: flex;
-  column-gap: 3rem;
-  border-bottom: var(--grey) dotted 2px;
-  margin-top: 8px;
+  border: var(--grey) dotted 2px;
+  cursor: pointer;
 }
 
 div#event-category > ul:first-child {
@@ -376,6 +375,26 @@ select {
   display: inline;
 }
 
+/* .selected */
+li.selected {
+  opacity: 1;
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+div#event-category > ul > li.selected {
+  border: solid var(--grey) 2px;
+  border-radius: 3.5px;
+}
+
+li.selected p {
+  font-weight: 600;
+}
+
+.errrrr {
+  color: indianred;
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 960px) {
   
@@ -395,6 +414,6 @@ select {
 
 @media (max-width: 375px) {
   h1.event-name {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 }
