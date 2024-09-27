@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   raceSel.forEach( selEv => {
     selEv.addEventListener('click', (e) => {
+      // clicks the closest target input
       const groupItem = e.target.closest('input');
       if (!groupItem) return;
 
+      // clicked event list item
       const item = groupItem.parentElement;
 
       const otherItems = document.querySelectorAll('li.radio-btn');

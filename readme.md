@@ -11,3 +11,5 @@
 - registration form that uses nodejs as the server. the form data is first validated client side, then again server side using express-validator
 - validated data is stored in a mysql db
 - the validated data is also stored in a google sheet with users with the link only able to view
+- client side and server side form validation
+- form is responisve
