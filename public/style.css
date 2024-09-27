@@ -169,12 +169,13 @@ input, textarea {
 /* date of birth */
 div#date-of-birth {
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 3rem;
+  flex-direction: column;
 }
 
-div#date-of-birth label {
-  width: 100%;
+div#birthday {
+  display: flex;
+  width: auto;
+  column-gap: 3rem;
 }
 
 /* gender */
@@ -227,6 +228,7 @@ div#event-category > ul > li {
   display: flex;
   border: var(--grey) dotted 2px;
   cursor: pointer;
+  margin-top: 1.5rem;
 }
 
 div#event-category > ul > li p:not(:first-child) {  
@@ -342,23 +344,21 @@ div#container-footer {
   color: var(--light-color);
   padding: 1.5rem 6rem;
   display: flex;
-  flex-wrap: wrap;
+  column-gap: 1rem;
   justify-content: space-between;
   align-items: center;
+  font-size: 1rem;
 }
 
 div#container-footer > div#socials {
   display: flex;
   column-gap: 1.4rem;
   align-items: center;
+  font-size: 1.35rem;
 }
 
 div#container-footer > div#socials > a {
   color: var(--light-color);
-}
-
-div#container-footer > p {
-  font-size: 1.2rem;
 }
 
 div#container-footer > div#contact {
@@ -379,7 +379,7 @@ select {
   background-color: var(--white);
   border: var(--light-color) solid 3px;
   border-radius: 5px;
-  font-family: var(--font);
+  font-family: var(-	-font);
   font-weight: 400;
   width: auto;
   padding: 2px 4px 2px 10px;
@@ -414,26 +414,57 @@ div#event-category > ul > li.selected {
 
 li.selected p {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 
 /* MEDIA QUERIES */
-@media (max-width: 960px) {
-  
+/* desktop view */
+@media (min-width: 676px) and (max-width: 1100px) {
+  /* footer */
+  div#container-footer {
+    padding: 1.5rem 2rem;
+  }
+
+  div#container-footer > div#socials {
+    column-gap: 0.8rem;
+  }
+
+  div#container-footer > p {
+    text-align: center;
+  }
 }
 
-@media (max-width: 900px) {
-  
+@media (min-width:676px) and (max-width: 960px) {
+   /* header */
+  h1.event-name {
+    font-size: 3.25rem;
+  }
+
+  p.theme {
+    font-size: 2rem;
+  }
+  /* form container */
+  #container {
+    padding: 2rem 3rem;
+  }
+
+  div.container-form-header {
+    padding: 0;
+  } 
+
+  .container-form-header > div:nth-child(2) {
+    width: 70%;
+  }
+  .container-form-header > div:nth-child(3) {
+    width: 30%;
+  }
+
+  /* footer */
+  div#container-footer {
+    font-size: 1rem;
+  }
 }
-
-@media (max-width: 675px) {
-
-}
-
-@media (max-width: 500px) {
-  
-}
-
+/* mobile & tablet view */
 @media (max-width: 675px) {
   /* user input fields */
   select[type='text'], textarea {
@@ -442,6 +473,10 @@ li.selected p {
 
   label {
     margin-bottom: 0.25rem;
+  }
+
+  li.selected p {
+    font-size: 1rem;
   }
 
   /* header */
@@ -462,7 +497,7 @@ li.selected p {
   }
   
   form * {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   /* container */
@@ -473,19 +508,16 @@ li.selected p {
 
   .container-form-header {
     padding: 0 0.5rem;
-    flex-direction: column;
-    row-gap: 4px;
-    margin-bottom: 1rem;
+    row-gap: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .container-form-header > p {
-    font-size: 1.5rem;
+    font-size: 1.95rem;
   }
 
   .container-form-header div, .container-form-header div:last-child {
     font-size: 12px;
-    text-align: start;
-    width: 100%;
   }
 
   .container-form-header i {
@@ -493,7 +525,7 @@ li.selected p {
   }
 
   .container-form-instructions {
-    font-size: 0.75rem;
+    font-size: 0.95rem;
     text-wrap: wrap;
     word-wrap: break-word;
     margin: 1rem 0;
@@ -505,16 +537,11 @@ li.selected p {
   }
   /* date of birth */
 
-  div#date-of-birth {
-    display: flex;
-    flex-direction: column;
-    row-gap: 4px;
+  div#birthday {
+    justify-content: space-between;
+    column-gap: 0;
   }
-
-  div#date-of-birth select {
-    width: 35%;
-    margin-bottom: 0.5rem;
-  }
+	
 
   /* gender */
   div#gender select {
@@ -548,8 +575,12 @@ li.selected p {
     margin-bottom: 0;
   }
   /* event category */
+  div#event-category > ul {
+    row-gap: 1rem;
+  }
+
   div#event-category > ul > li {
-    margin-bottom: 1.25rem;
+    margin: 0;
   }
 
   /* event discovery */
@@ -600,5 +631,14 @@ li.selected p {
 
   div#container-footer > div#socials {
     column-gap: 1rem;
+  }
+
+  button {
+    text-transform: none;
+  }
+
+  button:hover {
+    box-shadow: none;
+    font-size: 1rem;
   }
 }

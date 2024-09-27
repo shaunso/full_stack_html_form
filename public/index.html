@@ -88,12 +88,12 @@
         <!-- Date of birth -->
         <div id="date-of-birth">
           <label for="dob" class="required">Date of birth:</label>  
-
-          <select name="day" id="day" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select day of birth')" title="Select day of birth">
+          <div id="birthday"> 
+           <select name="day" id="day" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select day of birth')" title="Select day of birth">
             <option value="" selected disabled>-- DD --</option>
             <option value="01">01</option>
             <option value="02">02</option>
-            <option value="03">03</option>
+             <option value="03">03</option>
             <option value="04">04</option>
             <option value="05">05</option>
             <option value="06">06</option>
@@ -122,8 +122,8 @@
             <option value="29">29</option>
             <option value="30">30</option>
             <option value="31">31</option>
-          </select>
-          <select name="month" id="month" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select month of birth')" title="Select month of birth">
+           </select>
+           <select name="month" id="month" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select month of birth')" title="Select month of birth">
             <option value="" selected disabled>-- MM --</option>
             <option value="01">01</option>
             <option value="03">02</option>
@@ -137,9 +137,9 @@
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
-          </select>
+           </select>
   
-          <select name="year" id="year" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select year of birth')" title="Select year of birth">
+           <select name="year" id="year" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select year of birth')" title="Select year of birth">
             <option value="" selected disabled>-- YYYY --</option>
             <option value="2013">2013</option>
             <option value="2012">2012</option>
@@ -241,7 +241,8 @@
             <option value="1923">1916</option>
             <option value="1923">1915</option>
             <option value="1923">1914</option>
-          </select>
+           </select>
+          </div>
         </div>
             
         <!-- Gender -->
