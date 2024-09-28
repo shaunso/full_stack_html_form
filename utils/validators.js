@@ -48,12 +48,12 @@ export const validators =
   body('email').trim().escape().normalizeEmail().isEmail().withMessage('Enter valid email address').isLength({min:6}).withMessage('Email must contain 6 or more characters').bail().isLength({max:64}).withMessage('Email must contain 64 or less characters'),
 
   // address
-  body('address').trim().escape().notEmpty().withMessage('Address cannot be left blank').bail().isLength({min: 12}).withMessage('Address must contain 12 or more characters').bail().isLength({max: 64}).withMessage('Address must contain 64 or less characters').bail().matches(/^[A-Za-z0-9 ,-]+$/).withMessage('Address must only contain letters and numbers'),
+  body('address').trim().escape().notEmpty().withMessage('Address cannot be left blank').bail().isLength({min: 12}).withMessage('Address must contain 12 or more characters').bail().isLength({max: 90}).withMessage('Address must contain 90 or less characters').bail().matches(/^[A-Za-z0-9 ,-]+$/).withMessage('Address must only contain letters and numbers'),
 
   // race category
   body('event_category').trim().escape().notEmpty().withMessage('Select the race you are entering').custom( race => {
-    if ( race === "21KM" || race === "10KM" || race === "5KM" || race === "2KM" || race === "wheelchair" || race === "spinners" ) return race;
-    throw new Error('Select only the options below');
+    if ( race === "250KM" || race === "161KM" || race === "100KM" ) return race;
+    throw new Error('Select only one option below');
   }),
 
   // emergency contact full name

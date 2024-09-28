@@ -59,7 +59,7 @@
     <hr class="two">
   </section>
 
-  <!--  -->
+  <!-- form -->
   <section>
     <form action="/" method="post" autocomplete="on" id="reg-form" target="_self">
       <fieldset>
@@ -747,7 +747,7 @@
             Address:
           </label>
   
-          <textarea name="address" id="address" required minlength="12" maxlength="64" pattern="[A-Za-z0-9 ,-]{12,64}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Address must contain 12 or more letters')" title="Address must contain 12 or more letters"></textarea>
+          <textarea name="address" id="address" required minlength="12" maxlength="90" pattern="[A-Za-z0-9 ,-]{12,90}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Address must contain 12 or more letters')" title="Address must contain 12 or more letters"></textarea>
         </div>
       </fieldset>
 
@@ -759,24 +759,24 @@
         <div id="event-category">
           <ul>
             <li class="radio-btn">
-              <input type="radio" name="event_category" id="21km" value="21KM" required>
-              <label for="21km">
-                <p>21KM</p>
-                <p>US$25</p>
+              <input type="radio" name="event_category" id="250KM" value="250KM" required>
+              <label for="250KM">
+                <p>250KM</p>
+                <p>US$350</p>
               </label>
             </li>
             <li class="radio-btn">
-              <input type="radio" name="event_category" id="10km" value="10KM">
-              <label for="10km">
-                <p>10KM</p>
-                <p>US$15</p>
+              <input type="radio" name="event_category" id="161KM" value="161KM">
+              <label for="161KM">
+                <p>161KM</p>
+                <p>US$275</p>
               </label>
             </li>
             <li class="radio-btn">
-              <input type="radio" name="event_category" id="5km" value="5KM">
-              <label for="5km">
-                <p>5KM</p>         
-                <p>US$10</p>
+              <input type="radio" name="event_category" id="100KM" value="100KM">
+              <label for="100KM">
+                <p>100KM</p>         
+                <p>US$200</p>
               </label>
             </li>
           </ul

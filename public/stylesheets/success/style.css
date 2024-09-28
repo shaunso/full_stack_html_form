@@ -24,24 +24,28 @@ body {
   font-family: var(--font);
   line-height: 1.5;
   overflow-x: hidden;
-  font-size: 1.35rem;
+  font-size: 1rem;
   text-anchor: end;
   height: 100vh;
-  /* height: 100%; */
-  /* display: flex;
-  height: 100vh;
+  display: flex;
   flex-direction: column;
-  justify-content: space-between; */
-  /* row-gap: 2rem; */
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 10% 1fr 10%;
+  justify-content: space-between; 
+  row-gap: 2rem;
 }
 
 /* links */
 a {
   text-decoration: none;
   color: #333;
+}
+/* horizontal rule */
+hr.two {
+  opacity: 35%;
+  margin: 1.25rem 0;
+}
+/* list items */
+ul {
+  list-style: none;
 }
 
 /* header */
@@ -55,13 +59,14 @@ header > h3 {
   position: relative;
   letter-spacing: 1.5px;
   word-spacing: 6px;
+  font-size: 1.5rem;
 }
 
 header > h3::after {
   content: '';
   position: absolute;
   width: 100%;
-  height: 0.375rem;
+  height: 0.25rem;
   background-color: var(--dark-color);
   left: 0;
   bottom: 0;
@@ -70,8 +75,7 @@ header > h3::after {
 
 /* container */
 div#card-container {
-  width: min(95%, 550px);
-  /* height: 70vh; */
+  width: min(90%, 500px);
   margin: 0 auto;
   background-color: var(--bg-card-container);
   border: 0.5px solid rgba(128, 128, 128, 0.119);
@@ -81,6 +85,7 @@ div#card-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-self: center;
   /* row-gap: 2rem; */
 }
 
@@ -90,13 +95,13 @@ div.card-message-success {
   flex-direction: column;
   row-gap: 2rem;
   align-items: center;
-  padding: 2rem 0;
+  padding: 2rem 0 1rem 0;
   border-radius: 28px 28px 0 0;
   color: var(--white);
 }
 
 div.card-message-success i {
-  font-size: 6rem;
+  font-size: 4rem;
   color: var(--green);
   background-color: var(--white);
   padding: 1.5rem 2rem;
@@ -110,17 +115,19 @@ div.card-message-success h3 {
 }
 
 div.card-text {
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1.5rem 1.5rem 2.5rem;
   font-size: 1.45rem;
   font-weight: 400;
 }
 
 div.card-text p:first-child:first-letter {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 div.card-text p#entry-no {
   font-weight: 400;
+  font-size: 0.75rem;
+  text-transform: uppercase;
   font-style: oblique;
   letter-spacing: 1.25px;
   padding-left: 1rem;
@@ -128,28 +135,21 @@ div.card-text p#entry-no {
 
 div.card-text p#entry-no span {
   font-weight: 600;  
+  font-size: 1.45rem;
   font-style: normal;
   font-family: var(--alt-font);
 }
 
-/* horizontal rule */
-hr.two {
-  opacity: 35%;
-  margin: 1.25rem 0;
-}
-
 div.card-btns {
- padding: 1.5rem 2rem 4rem 2rem;
+ padding: 2.5rem 2rem 5rem 2rem;
  display: flex;
  justify-content: space-between;
+ column-gap: 2rem;
 }
 
 /* button */
 button {
-  border: none;
   border-radius: 10px;
-  background-color: var(--green);
-  color: var(--white);
   font-weight: 600;
   letter-spacing: 1.5px;
   transition: ease-in-out 75ms;
@@ -159,6 +159,12 @@ button {
 
 button:hover {
   cursor: pointer;
+}
+
+button.btn-pri {
+  background-color: var(--green);
+  border: none;
+  color: var(--white);
 }
 
 button.btn-sec {
@@ -184,12 +190,6 @@ button.btn-ter:hover {
 }
 
 /* footer */
-footer {
-  /* position: fixed;
-  bottom: 0; */
-  width: 100%;
-}
-
 div#container-footer {
   background-color: var(--dark-color);
   color: var(--light-color);
@@ -198,7 +198,6 @@ div#container-footer {
   column-gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
   height: 10vh;
 }
 
@@ -228,114 +227,92 @@ div#container-footer > div#contact > p {
 /* MEDIA QUERIES */
 /* desktop view */
 @media (min-width: 676px) and (max-width: 1100px) {
+  /* buttons */
+  div.card-btns {
+    padding: 2.5rem 2rem 3rem 2rem;
+  }
+
   /* footer */
   div#container-footer {
     padding: 1.5rem 2rem;
   }
-
   div#container-footer > div#socials {
     column-gap: 0.8rem;
   }
-
   div#container-footer > p {
     text-align: center;
   }
 }
 
-@media (min-width:676px) and (max-width: 960px) {
-   /* header */
-  h1.event-name {
-    font-size: 3.25rem;
-  }
-
-  p.theme {
-    font-size: 2rem;
-  }
-  /* form container */
-  #container {
-    padding: 2rem 3rem;
-  }
-
-  div.container-form-header {
-    padding: 0;
-  } 
-
-  .container-form-header > div:nth-child(2) {
-    width: 70%;
-  }
-  .container-form-header > div:nth-child(3) {
-    width: 30%;
-  }
-
-  /* footer */
-  div#container-footer {
-    font-size: 1rem;
+@media (max-width: 850px) {
+  body {
+    height: auto;
   }
 }
+
 /* mobile & tablet view */
 @media (max-width: 675px) {
   /* header */
   header {
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin: 0;
+    padding-left: 7.5%;
   }
-  h1.event-name {
-    font-size: 2.25rem;
+  header > h3 {
+    font-size: 1.35rem;
   }
-  p.theme {
+
+  /* card-message */
+  div.card-message-success {
+    row-gap: 1rem;
+  }
+  div.card-message-success i {
+    font-size: 3rem;
+    padding: 1rem 1.3rem;
+  }
+  
+  div.card-message-success h3 {
     font-size: 1.25rem;
   }
-
-  /* form */
-  form {
-    padding-top: 0.75rem;
+ /* card-text */
+  div.card-text {
+    padding: 1.5rem;
   }
   
-  form * {
-    font-size: 0.9rem;
-  }
-
-  /* container */
-  #container {
-    padding: 2rem 0.5rem;
-    margin: 0 auto;
-  }
-
-  .container-form-header {
-    padding: 0 0.5rem;
-    row-gap: 1rem;
-    margin-bottom: 1.5rem;
-    font-size: 12px;
-  }
-
-  .container-form-header > p {
-    font-size: 1.95rem;
-  }
-  
-  .container-form-header > div:nth-child(2) {
-    width: 70%;
-  }
-  .container-form-header > div:nth-child(3) {
-    width: 30%;
-  }
-
-  .container-form-header i {
-    margin-right: 4px;
-  }
-
-  .container-form-instructions {
-    font-size: 0.95rem;
-    text-wrap: wrap;
-    word-wrap: break-word;
-    margin: 1rem 0;
-  }
-
-
-  /* submit button */
-  button {
-    margin-top: 1.25rem;
+  div.card-text {
     font-size: 1rem;
+  }
+  
+  div.card-text p:first-child:first-letter {
+    font-size: 1.2rem;
+  }
+
+  div.card-text p#entry-no {
+    font-size: 0.65rem;
+    padding-left: 0;
+  }
+  
+  div.card-text p#entry-no span {
+    font-size: 1.4rem;
+  }
+  /* card-buttons */
+  div.card-btns {
+    padding: 1rem 2rem 2.5rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    row-gap: 1.5rem;
+   }
+  /* buttons */
+  button {
+    font-size: 0.8rem;
     letter-spacing: 1.25px;
+    font-weight: 600;
+    padding: 0.75rem;
+    text-transform: none;
+  }
+
+  button:hover {
+    box-shadow: none;
+    font-size: 1rem;
   }
 
   /* footer */
@@ -347,6 +324,7 @@ div#container-footer > div#contact > p {
     align-items: start; 
     row-gap: 0.85rem;
     font-size: 1.2rem;
+    height: auto;
   }
 
   div#container-footer > p {
@@ -366,13 +344,11 @@ div#container-footer > div#contact > p {
   div#container-footer > div#socials {
     column-gap: 1rem;
   }
+}
 
-  button {
-    text-transform: none;
-  }
-
-  button:hover {
-    box-shadow: none;
-    font-size: 1rem;
+@media (max-width: 450px) {
+  /* hr */
+  hr.two {
+    margin: 2rem 0;
   }
 }

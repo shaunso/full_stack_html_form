@@ -338,10 +338,6 @@ button:hover {
   font-size: 1.3rem;
 }
 /* footer */
-footer {
-  height: 5vh;
-}
-
 div#container-footer {
   background-color: var(--dark-color);
   color: var(--light-color);
