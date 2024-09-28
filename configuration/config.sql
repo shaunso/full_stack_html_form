@@ -1,9 +1,11 @@
-CREATE DATABASE gutu_half_marathon;
+CREATE DATABASE reg_form;
 
-CREATE TABLE gutu_half_marathon.registration(
-	id INT NOT NULL AUTO_INCREMENT,
-	date_registered DATETIME DEFAULT CURRENT_TIMESTAMP,
-  race_id VARCHAR(8),
+USE reg_form;
+
+CREATE TABLE registration(
+  id INT NOT NULL AUTO_INCREMENT,
+  date_registered DATETIME DEFAULT CURRENT_TIMESTAMP,
+  race_id VARCHAR(8) NOT NULL,
   lname VARCHAR(50) NOT NULL,
   fname VARCHAR(80) NOT NULL,
   event_category VARCHAR(15) NOT NULL,
@@ -23,5 +25,3 @@ CREATE TABLE gutu_half_marathon.registration(
   UNIQUE KEY(race_id),
   PRIMARY KEY(id)
 );
-
-USE gutu_half_marathon;

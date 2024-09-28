@@ -179,10 +179,14 @@ div#birthday {
 }
 
 /* gender */
+div#gender select[name="gender"] {
+  padding-right: 1rem;
+}
 
 /* id */
 div#id select[name="id_doc_typ"] {
   margin-bottom: 0.85rem;
+  padding-right: 1.5rem;
 }
 
 /* mobile number */
@@ -545,13 +549,13 @@ li.selected p {
 
   /* gender */
   div#gender select {
-    width: 55%;
+    width: auto;
   }
 
   /* id */
   div#id select[name="id_doc_typ"] {
     margin-bottom: 0.75rem;
-    width: 92%;
+    width: auto;
   }
 
   /* mobile numbers */
