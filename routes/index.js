@@ -49,8 +49,8 @@ router.post( '/', validators, async ( req, res ) => {
 
   // write the form data into the database
   pool.execute( query, usr_info, ( err, result ) => {
-    if (err) {
-      // throw err
+   if (err) {
+      //throw err
       res.status(500).send('<h3> Something went wrong. <a href="/">Please resubmit<a><h3>');
     };
     // res.status(200).json({ userData: usr_info, queryResult: result} );
