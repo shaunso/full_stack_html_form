@@ -510,14 +510,18 @@ li.selected p {
     padding: 0 0.5rem;
     row-gap: 1rem;
     margin-bottom: 1.5rem;
+    font-size: 12px;
   }
 
   .container-form-header > p {
     font-size: 1.95rem;
   }
 
-  .container-form-header div, .container-form-header div:last-child {
-    font-size: 12px;
+  .container-form-header > div:nth-child(2) {
+    width: 70%;
+  }
+  .container-form-header > div:nth-child(3) {
+    width: 30%;
   }
 
   .container-form-header i {
