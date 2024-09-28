@@ -3,37 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- css -->
-  <link rel="stylesheet" href="./style.css">
-  <!-- favicon -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="./stylesheets/success/style.css">
+  <!-- FAVICONS -->
   <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-  <!-- font -->
+  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <!-- icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- ICONS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css" integrity="sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- title -->
+  <!-- TITLE -->
   <title>Successfully Submitted Entry | Umsweswe Donsa Ultra Marathon 2025</title>
 </head>
 <body>
+  <!-- HEADER -->
   <header>
     <h3>
       Umsweswe Donsa Ultra Marathon 2025
     </h3>
   </header>
-  <i class="fa-solid fa-check"></i>
-  <h3>Success</h3>
-  <p>
-    <%= name %>, you have successfully entered into the Umsweswe Donsa Ultra Marathon 2025.
-  </p>
-  <p>
-    reference no. <%= raceID %>
-  </p>
-  
-  <button class="btn-sec">Submit another entry</button>
 
-    <!-- footer -->
+  <!-- BODY -->
+  <div id="card-container">
+    <div class="card-message-success">
+      <i class="fa-solid fa-check"></i>
+      <h3>Success</h3>
+    </div>
+    
+    <div class="card-text">
+      <p id="usr-message">
+        <%= name %>, you have successfully entered into the Umsweswe Donsa Ultra Marathon 2025.
+      </p>
+
+      <hr class="two">
+
+      <p id="entry-no">
+        entry number: <span class="entry-no"><%= raceID %></span>
+      </p>
+    </div>
+    
+    <div class="card-btns">
+      <button class="btn-ter">
+        Modify entry
+      </button>
+      <a href="/">
+        <button class="btn-sec">
+          Submit another entry
+        </button>  
+      </a>
+    </div> 
+  </div>
+
+    <!-- FOOTER -->
     <footer>
       <div id="container-footer">
         <!-- icons won't load on iOS if ad blocker is on -->
@@ -44,6 +66,7 @@
           <a href="javascript:void(0);">
             <i class="fa-brands fa-instagram"></i>
           </a>
+
           <a href="javascript:void(0);">
             <i class="fa-brands fa-tiktok"></i>
           </a>              

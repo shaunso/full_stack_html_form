@@ -5,6 +5,9 @@
   --asterisk: hsl(348, 89%, 48%);
   --grey: hsl(0, 0%, 20%);
   --white: hsl(15, 20%, 98%);
+  --li-green: hsl(157, 68%, 41%);
+  --green: hsl(148, 88%, 40%);
+  --bg-card-container: rgba(240, 235, 226, 0.607);
   --font: "Poppins",Arial, Helvetica, sans-serif;
 }
 
@@ -320,7 +323,7 @@ button {
   height: 4rem;
   border: none;
   border-radius: 10px;
-  background-color: hsl(145, 62%, 53%);
+  background-color: var(--green);
   color: var(--white);
   font-weight: 700;
   text-transform: uppercase;
@@ -330,9 +333,9 @@ button {
 
 button:hover {
   cursor: pointer;
-  background-color: hsl(145, 59%, 46%);
+  background-color: var(--li-green);
   box-shadow: 2px 2px 2px rgba(0 ,0 ,0 , 0.2);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 /* footer */
 footer {
@@ -491,7 +494,7 @@ li.selected p {
     font-size: 1.25rem;
   }
 
-  /* header */
+  /* form */
   form {
     padding-top: 0.75rem;
   }
@@ -516,7 +519,7 @@ li.selected p {
   .container-form-header > p {
     font-size: 1.95rem;
   }
-  
+
   .container-form-header > div:nth-child(2) {
     width: 70%;
   }
