@@ -13,3 +13,4 @@
 - the validated data is also stored in a google sheet with users with the link only able to view
 - client side and server side form validation
 - form is responisve
+- flexbox & grid

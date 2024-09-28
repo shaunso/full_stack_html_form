@@ -55,7 +55,7 @@ router.post( '/', validators, async ( req, res ) => {
     };
     // res.status(200).json({ userData: usr_info, queryResult: result} );
     // on successful submission, success page sent in response to client post
-    res.status(200).render('submission_success');
+    res.status(200).render('submission_success', {name: usr_info[2], raceID: usr_info[0] });
 
     // ERROR EXPLAINED: error code 580 returned
     //   the pool appears to be closing and not reopening causing the attempt to connect to mysql to fail

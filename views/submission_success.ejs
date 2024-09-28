@@ -3,50 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <title>Registration Submitted | Dr Simon V Muzenda Gutu Half Marathon 2024</title>
+  <!-- css -->
+  <link rel="stylesheet" href="./style.css">
+  <!-- favicon -->
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css" integrity="sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- title -->
+  <title>Successfully Submitted Entry | Umsweswe Donsa Ultra Marathon 2025</title>
 </head>
 <body>
   <header>
-    Dr Simon V Muzenda Gutu Half Marathon 2024
+    <h3>
+      Umsweswe Donsa Ultra Marathon 2025
+    </h3>
   </header>
   <i class="fa-solid fa-check"></i>
   <h3>Success</h3>
-  <p>, you have successfully submitted your entry form.</p>
-  <p>To complete your entry, make a payment of $X.</p>
-  <p>Proof of purchase must be sent to YYY-YYYYYYY</p>
-  <p>You'll receiveconfirmation within 48 hours.</p>
+  <p>
+    <%= name %>, you have successfully entered into the Umsweswe Donsa Ultra Marathon 2025.
+  </p>
+  <p>
+    reference no. <%= raceID %>
+  </p>
+  
+  <button class="btn-sec">Submit another entry</button>
 
-  <div class="container">
-    Payment details
-    <div>
-      Bank
-      FBC Masvingo
-      SV Muzenda Sports Foundation
-      1055131891555
-    </div>
-
-    <div>
-      Ecocash
-      0772 210 914
-    </div>
-  </div>
-
-  <button>Click here to submit another entry</button>
-
-  <!--  -->
-  <footer>
-    <p>Get in touch</p>
-    <ul>
-      <li>
-        name@email.com
-      </li>
-      <li>
-        +263-775-101-101
-      </li>
-    </ul>
-     &copy; Dr Simon V Muzenda Gutu Half Marathon 2024
-  </footer>
+    <!-- footer -->
+    <footer>
+      <div id="container-footer">
+        <!-- icons won't load on iOS if ad blocker is on -->
+        <div id="socials">
+          <a href="javascript:void(0);">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="javascript:void(0);">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="javascript:void(0);">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>              
+        </div>
+  
+        <p>
+          &copy; 2025 Umsweswe Donsa Ultra Marathon. All rights reserved.
+        </p>
+  
+        <div id="contact">
+          <p>Contact</p>
+          <ul>
+            <li>
+              enquiries@udmarathon.co.zw
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
 </body>
 </html>
