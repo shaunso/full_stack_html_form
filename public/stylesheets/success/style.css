@@ -312,8 +312,17 @@ div#container-footer > div#contact > p {
 
   button:hover {
     box-shadow: none;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
+
+  button.btn-sec:hover, button.btn-ter:hover {
+    color: var(--primary-color);
+    background-color: var(--white);
+  }
+  button.btn-ter:hover {
+    color: var(--grey);
+    background-color: var(--white);
+  }  
 
   /* footer */
   div#container-footer {

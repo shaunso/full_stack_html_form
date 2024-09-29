@@ -86,8 +86,8 @@
                 <label for="fname" class="required" class="valid-text">
                   First name(s):
                 </label>
- <!-- pattern  -->
-                <input type="text" name="fname" id="fname" required minlength="3" maxlength="40"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('First name must contain 3 or more letters')" value="<%= data.fname %>" placeholder="">
+
+                <input type="text" name="fname" id="fname" required minlength="3" maxlength="40" pattern="[a-zA-Z]{3,30}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('First name must contain 3 or more letters')" value="<%= data.fname %>" placeholder="">
               </div>
             </div>
             
@@ -794,7 +794,11 @@
                     class="radio-btn"
                   <% } %>
                 >
-                  <input type="radio" name="event_category" id="250KM" value="250KM" required>
+                  <% if ( data.event_category === '250KM') { %> 
+                    <input type="radio" name="event_category" id="250KM" value="250KM" required checked>
+                  <% } else { %>
+                    <input type="radio" name="event_category" id="250KM" value="250KM" required>
+                  <% } %>                
                   <label for="250KM">
                     <p>250KM</p>
                     <p>$350</p>
@@ -808,7 +812,11 @@
                     class="radio-btn"
                   <% } %>
                 >
-                  <input type="radio" name="event_category" id="161KM" value="161KM">
+                  <% if ( data.event_category === '161KM') { %> 
+                    <input type="radio" name="event_category" id="161KM" value="161KM" checked> 
+                  <% } else { %>
+                    <input type="radio" name="event_category" id="161KM" value="161KM">
+                  <% } %>                
                   <label for="161KM">
                     <p>161KM</p>
                     <p>$275</p>
@@ -822,7 +830,11 @@
                     class="radio-btn"
                   <% } %>
                 >    
-                  <input type="radio" name="event_category" id="100KM" value="100KM">
+                  <% if ( data.event_category === '100KM') { %> 
+                    <input type="radio" name="event_category" id="100KM" value="100KM" checked>
+                  <% } else { %>
+                    <input type="radio" name="event_category" id="100KM" value="100KM">
+                  <% } %>                
                   <label for="100KM">
                     <p>100KM</p>         
                     <p>$200</p>

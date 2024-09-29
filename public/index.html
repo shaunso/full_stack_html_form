@@ -74,7 +74,7 @@
                   First name(s):
                 </label>
         
-                <input type="text" name="fname" id="fname" required minlength="3" maxlength="40"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('First name must contain 3 or more letters')" pattern="[a-zA-Z\s\-]{2,64}">
+                <input type="text" name="fname" id="fname" required minlength="3" maxlength="40"  pattern="[a-zA-Z]{3,30}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('First name must contain 3 or more letters')" pattern="[a-zA-Z\s\-]{2,64}">
               </div>
             </div>
            

@@ -4,3 +4,4 @@ curl -d.txt
 test_queries.txt
 ghm_sandbox.sql
 credentials.json
+views/test.ejs
