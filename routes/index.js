@@ -25,7 +25,7 @@ router.post( '/', validators, async ( req, res ) => {
   ////////////////////////////
   ////// this line needs ejs error handling
   if ( !errors.isEmpty() ) {
-    return res.status(400).render('submission_error', { data: data, errors: errors.array() });
+    return res.status(400).render('test', { data: data, errors: errors.array() });
   }
 
   // object destructing used to get user data for each field

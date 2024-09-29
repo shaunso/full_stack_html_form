@@ -15,3 +15,5 @@
 - form is responisve
 - flexbox & grid
 - hardcoded options for country-code, year of birth, etc. exponentially increased the length of the html as phone number input with country code is asked 3 times
+- using regex in form as client side validation
+s

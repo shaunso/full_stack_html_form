@@ -11,6 +11,7 @@
   --green: hsl(148, 88%, 40%);
   --bg-card-container: rgba(240, 235, 226, 0.607);
   --font: "Poppins",Arial, Helvetica, sans-serif;
+  --alt-font: "Lato",Arial, Helvetica, sans-serif;
   --fnt-600: 600;
 }
 
@@ -226,6 +227,7 @@ div#event-category > ul {
   flex-wrap: wrap;
   column-gap: 0.5rem;
   padding: 0 0.5rem;
+  color: var(--grey);
 }
 
 div#event-category > ul > li {
@@ -233,16 +235,11 @@ div#event-category > ul > li {
   border: var(--grey) dotted 2px;
   cursor: pointer;
   margin-top: 1.5rem;
+  font-family: var(--alt-font);
 }
 
 div#event-category > ul > li p:not(:first-child) {  
-  font-weight: 300;
-}
-
-div#event-category > ul > li span {
-  font-size: x-small;
-  font-weight: 200;
-  display: inline;
+  font-weight: 500;
 }
 
 div#event-category > ul label {
@@ -254,6 +251,10 @@ div#event-category > ul label {
 
 div#event-category > ul label p {
   width: auto;
+}
+
+div#event-category > ul > li > label > p {
+  font-weight: 800;
 }
 
 div#event-category li *:hover, input[type="radio"]:hover {
@@ -404,13 +405,11 @@ li.selected {
   opacity: 1;
   background-color: var(--white);
   color: var(--primary-color);
-  
 }
 
 div#event-category > ul > li.selected {
   border: solid var(--grey) 2px;
-  border-radius: 3.5px;
-  
+  border-radius: 3.5px;  
 }
 
 li.selected p {

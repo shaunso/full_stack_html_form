@@ -4,15 +4,20 @@ header h1.event-name {
 }
 
 div#error-container {
-  background-color: hsla(348, 93%, 53%, 0.912);
+  background-color: hsla(0, 86%, 51%, 0.939);
   color: var(--white);
   font-size: 0.95rem;
   text-transform: uppercase;
   width: min(75%, 800px);
   height: auto;
-  padding: 4rem 5rem 6rem 5rem;
+  padding: 2rem 5rem 3rem 5rem;
   margin: 0 auto;
   border-radius: 8px;
+}
+
+div#error-container ul {
+  margin-top: 0.75rem;
+  padding-left: 0.5rem;
 }
 
 div#error-container ul li::before {

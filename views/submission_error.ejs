@@ -35,45 +35,10 @@
         </h2>
 
         <ul>
+          <!-- function returns error in human readable form -->
           <% errors.forEach( d => { %>
-            <li>
-              <% if ( d.path === 'fname' ) { %>
-                First name(s)           
-              <% } %>
-
-              <% if ( d.path === 'mobile_number' ) { %>
-                Mobile number           
-              <% } %>
-
-              <% if ( d.path === 'mobile_number' ) { %>
-                Mobile number           
-              <% } %>      
-              
-              <% if ( d.path === 'fname' ) { %>
-                First name(s)           
-              <% } %>
-
-              <% if ( d.path === 'mobile_number' ) { %>
-                Mobile number           
-              <% } %>
-
-              <% if ( d.path === 'mobile_number' ) { %>
-                Mobile number           
-              <% } %> 
-              
-              <% if ( d.path === 'fname' ) { %>
-                First name(s)           
-              <% } %>
-
-              <% if ( d.path === 'mobile_number' ) { %>
-                Mobile number           
-              <% } %>
-
-              <% if ( d.path === 'mobile_number' ) { %>
-                Mobile number           
-              <% } %>               
-            </li>
-          <% }) %>
+            <%- include('listItems', { d: d }); %>
+          <% }); %>
         </ul>
       </div>
      </section>
@@ -132,7 +97,7 @@
                 Last name:
               </label>
       
-              <input type="text" name="lname" id="lname" required minlength="3" maxlength="30" pattern="[a-zA-Z ]{3,30}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Last name must contain 3 or more letters')" value="<%= data.lname %>" placeholder="">
+              <input type="text" name="lname" id="lname" required minlength="3" maxlength="30" pattern="[a-zA-Z\-]{3,30}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Last name must contain 3 or more letters')" value="<%= data.lname %>" placeholder="">
             </div> 
 
             <!-- Date of birth -->
@@ -332,7 +297,7 @@
                 Identity document number:            
               </label>
 
-              <input type="text" name="id_doc_no" id="id_doc_no" required minlength="6" maxlength="20" pattern="[a-zA-Z0-9 ]{6,20}"  title="Identification document number must contain 3 or more letters" value="<%= data.id_doc_no %>" placeholder="">
+              <input type="text" name="id_doc_no" id="id_doc_no" required minlength="6" maxlength="20" pattern="[a-zA-Z0-9\s]{6,20}"  title="Identification document number must contain 3 or more letters" value="<%= data.id_doc_no %>" placeholder="">
             </div>      
             
             <!-- Mobile number -->
@@ -560,8 +525,8 @@
                 <option value="996">+996</option>
                 <option value="998">+998</option>          
               </select>
-<!-- pattern -->
-              <input type="tel" name="mobile_number" id="number" required minlength="7" maxlength="15" pattern="[a-z0-9]{7,40}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Mobile number must contain 7 or more numbers')" title="Mobile number must contain 7 or more numbers" value="<%= data.mobile_number %>" placeholder="">
+
+              <input type="tel" name="mobile_number" id="number" required minlength="7" maxlength="15" pattern="[0-9\s\-]{7,15}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Mobile number must contain 7 or more numbers')" title="Mobile number must contain 7 or more numbers" value="<%= data.mobile_number %>" placeholder="">
             </div>
         
             <!-- Alternative number -->
@@ -790,7 +755,7 @@
                 <option value="998">+998</option>          
               </select>
 
-              <input type="tel" name="alt_mobile_number" id="alt_mobile_number" minlength="7" maxlength="15" pattern="[0-9]{7,40}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Mobile number must contain 7 or more numbers')" title="Mobile number must contain 7 or more numbers" value="<%= data.alt_mobile_number %>" placeholder="">
+              <input type="tel" name="alt_mobile_number" id="alt_mobile_number" minlength="7" maxlength="15" pattern="[0-9\s\-]{7,15}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Mobile number must contain 7 or more numbers')" title="Mobile number must contain 7 or more numbers" value="<%= data.alt_mobile_number %>" placeholder="">
             </div>    
             
             <!-- Email -->
@@ -808,7 +773,7 @@
                 Address:
               </label>
       
-              <textarea name="address" id="address" required minlength="12" maxlength="90" pattern="[A-Za-z0-9,- ]{12,90}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Address must contain 12 or more letters')" title="Address must contain 12 or more letters" placeholder=""><%= data.address %></textarea>
+              <textarea name="address" id="address" required minlength="12" maxlength="90" pattern="[A-Za-z0-9]{12,90}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Address must contain 12 or more letters')" title="Address must contain 12 or more letters" placeholder=""><%= data.address %></textarea>
             </div>
           </fieldset>
 
@@ -822,7 +787,13 @@
 
             <div id="event-category">
               <ul>
-                <li class="radio-btn">
+                <li 
+                  <% if ( data.event_category === '250KM') { %> 
+                    class="radio-btn selected"  
+                  <% } else { %>
+                    class="radio-btn"
+                  <% } %>
+                >
                   <input type="radio" name="event_category" id="250KM" value="250KM" required>
                   <label for="250KM">
                     <p>250KM</p>
@@ -830,7 +801,13 @@
                   </label>
                 </li>
 
-                <li class="radio-btn">
+                <li 
+                  <% if ( data.event_category === '161KM') { %> 
+                    class="radio-btn selected"  
+                  <% } else { %>
+                    class="radio-btn"
+                  <% } %>
+                >
                   <input type="radio" name="event_category" id="161KM" value="161KM">
                   <label for="161KM">
                     <p>161KM</p>
@@ -838,7 +815,13 @@
                   </label>
                 </li>
 
-                <li class="radio-btn">
+                <li 
+                  <% if ( data.event_category === '100KM') { %> 
+                    class="radio-btn selected"  
+                  <% } else { %>
+                    class="radio-btn"
+                  <% } %>
+                >    
                   <input type="radio" name="event_category" id="100KM" value="100KM">
                   <label for="100KM">
                     <p>100KM</p>         
@@ -860,7 +843,7 @@
                   Contact full name:
                 </label>
         
-                <input type="text" name="emerg_contact_name" id="emerg_contact_name" required minlength="6" maxlength="50" pattern="[a-zA-Z ]{6,50}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Emergency contact name must contain 3 or more letters')" title="Emergency contact name must contain 3 or more letters" value="<%= data.emerg_contact_name %>" placeholder="">
+                <input type="text" name="emerg_contact_name" id="emerg_contact_name" required minlength="6" maxlength="50" pattern="[a-zA-Z\s]{6,50}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Emergency contact name must contain 3 or more letters')" title="Emergency contact name must contain 3 or more letters" value="<%= data.emerg_contact_name %>" placeholder="">
               </div>
             
               <div id="emerg-contact-mobile">
@@ -1088,7 +1071,7 @@
                   <option value="998">+998</option>          
                 </select>  
 
-                <input type="tel" name="emerg_contact_mobile_number" id="emerg_contact_mobile_number" required minlength="7" maxlength="15" pattern="[0-9]{7,15}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Emergency contact mobile number must contain 7 or more numbers')" title="Emergency contact mobile number must contain 7 or more numbers" value="<%= data.emerg_contact_mobile_number %>" placeholder="">
+                <input type="tel" name="emerg_contact_mobile_number" id="emerg_contact_mobile_number" required minlength="7" maxlength="15" pattern="[0-9\s\-]{7,15}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Emergency contact mobile number must contain 7 or more numbers')" title="Emergency contact mobile number must contain 7 or more numbers" value="<%= data.emerg_contact_mobile_number %>" placeholder="">
               </div>            
             </fieldset>
           </div>
@@ -1106,7 +1089,7 @@
               </p>
             </label>
             
-            <input type="text" name="event_discovery" id="event_discovery" pattern="[a-zA-Z0-9 -,]{2,64}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Field must contain between 2 and 64 letters')" title="Field must contain between 2 and 64 letters" value="<%= data.event_discovery %>" placeholder="">      
+            <input type="text" name="event_discovery" id="event_discovery" pattern="[A-Za-z0-9\s\,\-]{2,64}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Field must contain between 2 and 64 letters')" title="Field must contain between 2 and 64 letters" value="<%= data.event_discovery %>" placeholder="">      
           </div>
 
           <hr class="two">          
@@ -1125,7 +1108,7 @@
               <li>
                 <input type="checkbox" name="policy" id="policy" value="TRUE" required  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
                 <label for="policy" class="required-bf"  class="valid-text">
-                  I acknowledge that I have read and accept Umsweswe Donsa Ultra Marathon's <a href="/" target="_blank">limitation of indemnity, liability, privacy and refund policy</a>
+                  I acknowledge that I have read and accept Umsweswe Donsa Ultra Marathon's <a href="/" target="_blank">limitation of indemnity, liability, privacy and refund policies</a>
                   </label>
           
               </li>
@@ -1176,7 +1159,7 @@
       </div>
     </div>
   </footer>
-
+<!-- <% %> -->
   <!-- scripts -->
   <script src="main.js"></script>
   <script>
