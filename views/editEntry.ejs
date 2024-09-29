@@ -15,7 +15,7 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css" integrity="sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- title -->
-    <title>Re-Entry Form | Umsweswe Donsa Ultra Marathon 2025</title>
+    <title>Edit entry | Umsweswe Donsa Ultra Marathon 2025</title>
   </head>
 <body>
   <!-- header -->
@@ -27,22 +27,6 @@
   </header>
 
   <main>
-    <!-- error container -->
-     <section>
-      <div id="error-container">
-        <h2>
-          Enter valid values for the following fields:
-        </h2>
-
-        <ul>
-          <!-- function returns error in human readable form -->
-          <% errors.forEach( d => { %>
-            <%- include('listItems', { d: d }); %>
-          <% }); %>
-        </ul>
-      </div>
-     </section>
-
     <!-- form container -->
     <div id="container">
       <!-- container header -->
@@ -86,8 +70,8 @@
                 <label for="fname" class="required" class="valid-text">
                   First name(s):
                 </label>
- <!-- pattern  -->
-                <input type="text" name="fname" id="fname" minlength="3" maxlength="40"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('First name must contain 3 or more letters')" value="<%= data.fname %>" placeholder="">
+
+                <input type="text" name="fname" id="fname" required minlength="3" maxlength="40" pattern="[a-zA-Z\s\-]{3,30}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('First name must contain 3 or more letters')" value="<%= data.fname %>" placeholder="">
               </div>
             </div>
             
@@ -97,7 +81,7 @@
                 Last name:
               </label>
       
-              <input type="text" name="lname" id="lname" minlength="3" maxlength="30" " oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Last name must contain 3 or more letters')" value="<%= data.lname %>" placeholder="">
+              <input type="text" name="lname" id="lname" required minlength="3" maxlength="30" pattern="[a-zA-Z\-]{3,30}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Last name must contain 3 or more letters')" value="<%= data.lname %>" placeholder="">
             </div> 
 
             <!-- Date of birth -->
@@ -107,7 +91,7 @@
               </label>  
 
               <div id="birthday"> 
-                <select name="day" id="day" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select day of birth')" title="Select day of birth">
+                <select name="day" id="day" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select day of birth')" title="Select day of birth">
                   <option value="<%= data.day %>" selected hidden><%= data.day %></option>
                   <option value="" disabled>-- DD --</option>
                   <option value="01">01</option>
@@ -142,7 +126,7 @@
                   <option value="30">30</option>
                   <option value="31">31</option>
                 </select>
-                <select name="month" id="month" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select month of birth')" title="Select month of birth">
+                <select name="month" id="month" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select month of birth')" title="Select month of birth">
                   <option value="<%= data.month %>" selected hidden><%= data.month %></option>
                   <option value="" disabled>-- MM --</option>
                   <option value="01">01</option>
@@ -159,7 +143,7 @@
                   <option value="12">12</option>
                 </select>
         
-                <select name="year" id="year" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select year of birth')" title="Select year of birth">
+                <select name="year" id="year" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select year of birth')" title="Select year of birth">
                   <option value="<%= data.year %>" selected hidden><%= data.year %></option>
                   <option value="" disabled>-- YYYY --</option>
                   <option value="2013">2013</option>
@@ -272,7 +256,7 @@
                 Gender:
               </label>
       
-              <select name="gender" id="gender" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select gender')" title="Select gender">
+              <select name="gender" id="gender" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select gender')" title="Select gender">
                 <option value="<%= data.gender %>" selected hidden><%= data.gender %></option>
                 <option value="" disabled>-- Select gender --</option>
                 <option value="Female">Female</option>
@@ -286,18 +270,18 @@
                 Identity document type:
               </label>
       
-              <select name="id_doc_typ" id="id_doc_typ" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select identity document type')" title="Select identity document type">
+              <select name="id_doc_typ" id="id_doc_typ" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select identity document type')" title="Select identity document type">
                 <option value="<%= data.id_doc_typ %>" selected hidden><%= data.id_doc_typ %></option>
                 <option value="" disabled>-- Select identity document type --</option>
-                <option value="ID">ID number</option>
-                <option value="Passport">Passport number</option>
+                <option value="National ID">National ID</option>
+                <option value="Passport">Passport</option>
               </select>
       
               <label for="id_doc_no" class="required">
                 Identity document number:            
               </label>
 
-              <input type="text" name="id_doc_no" id="id_doc_no" minlength="6" maxlength="20"  title="Identification document number must contain 3 or more letters" value="<%= data.id_doc_no %>" placeholder="">
+              <input type="text" name="id_doc_no" id="id_doc_no" required minlength="6" maxlength="20" pattern="[a-zA-Z0-9\s]{6,20}"  title="Identification document number must contain 3 or more letters" value="<%= data.id_doc_no %>" placeholder="">
             </div>      
             
             <!-- Mobile number -->
@@ -525,8 +509,8 @@
                 <option value="996">+996</option>
                 <option value="998">+998</option>          
               </select>
-<!-- pattern -->
-              <input type="tel" name="mobile_number" id="number" minlength="7" maxlength="15" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Mobile number must contain 7 or more numbers')" title="Mobile number must contain 7 or more numbers" value="<%= data.mobile_number %>" placeholder="">
+
+              <input type="tel" name="mobile_number" id="number" required minlength="7" maxlength="15" pattern="[0-9\s\-]{7,15}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Mobile number must contain 7 or more numbers')" title="Mobile number must contain 7 or more numbers" value="<%= data.mobile_number %>" placeholder="">
             </div>
         
             <!-- Alternative number -->
@@ -755,7 +739,7 @@
                 <option value="998">+998</option>          
               </select>
 
-              <input type="tel" name="alt_mobile_number" id="alt_mobile_number" minlength="7" maxlength="15"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Mobile number must contain 7 or more numbers')" title="Mobile number must contain 7 or more numbers" value="<%= data.alt_mobile_number %>" placeholder="">
+              <input type="tel" name="alt_mobile_number" id="alt_mobile_number" minlength="7" maxlength="15" pattern="[0-9\s\-]{7,15}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Mobile number must contain 7 or more numbers')" title="Mobile number must contain 7 or more numbers" value="<%= data.alt_mobile_number %>" placeholder="">
             </div>    
             
             <!-- Email -->
@@ -764,7 +748,7 @@
                 Email:
               </label>
       
-              <input type="email" name="email" id="email" minlength="6" maxlength="64" value="<%= data.email %>" placeholder=""> 
+              <input type="email" name="email" id="email" required minlength="6" maxlength="64" value="<%= data.email %>" placeholder=""> 
             </div>
 
             <!-- Address -->
@@ -773,7 +757,7 @@
                 Address:
               </label>
       
-              <textarea name="address" id="address" minlength="12" maxlength="90"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Address must contain 12 or more letters')" title="Address must contain 12 or more letters" placeholder=""><%= data.address %></textarea>
+              <textarea name="address" id="address" required minlength="12" maxlength="90" pattern="[A-Za-z0-9]{12,90}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Address must contain 12 or more letters')" title="Address must contain 12 or more letters" placeholder=""><%= data.address %></textarea>
             </div>
           </fieldset>
 
@@ -794,10 +778,14 @@
                     class="radio-btn"
                   <% } %>
                 >
-                  <input type="radio" name="event_category" id="250KM" value="250KM" >
+                  <% if ( data.event_category === '250KM') { %> 
+                    <input type="radio" name="event_category" id="250KM" value="250KM" required checked>
+                  <% } else { %>
+                    <input type="radio" name="event_category" id="250KM" value="250KM" required>
+                  <% } %>                
                   <label for="250KM">
                     <p>250KM</p>
-                    <p>US$350</p>
+                    <p>$350</p>
                   </label>
                 </li>
 
@@ -808,10 +796,14 @@
                     class="radio-btn"
                   <% } %>
                 >
-                  <input type="radio" name="event_category" id="161KM" value="161KM">
+                  <% if ( data.event_category === '161KM') { %> 
+                    <input type="radio" name="event_category" id="161KM" value="161KM" checked> 
+                  <% } else { %>
+                    <input type="radio" name="event_category" id="161KM" value="161KM">
+                  <% } %>                
                   <label for="161KM">
                     <p>161KM</p>
-                    <p>US$275</p>
+                    <p>$275</p>
                   </label>
                 </li>
 
@@ -822,10 +814,14 @@
                     class="radio-btn"
                   <% } %>
                 >    
-                  <input type="radio" name="event_category" id="100KM" value="100KM">
+                  <% if ( data.event_category === '100KM') { %> 
+                    <input type="radio" name="event_category" id="100KM" value="100KM" checked>
+                  <% } else { %>
+                    <input type="radio" name="event_category" id="100KM" value="100KM">
+                  <% } %>                
                   <label for="100KM">
                     <p>100KM</p>         
-                    <p>US$200</p>
+                    <p>$200</p>
                   </label>
                 </li>
               </ul
@@ -843,7 +839,7 @@
                   Contact full name:
                 </label>
         
-                <input type="text" name="emerg_contact_name" id="emerg_contact_name" minlength="6" maxlength="50"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Emergency contact name must contain 3 or more letters')" title="Emergency contact name must contain 3 or more letters" value="<%= data.emerg_contact_name %>" placeholder="">
+                <input type="text" name="emerg_contact_name" id="emerg_contact_name" required minlength="6" maxlength="50" pattern="[a-zA-Z\s]{6,50}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Emergency contact name must contain 3 or more letters')" title="Emergency contact name must contain 3 or more letters" value="<%= data.emerg_contact_name %>" placeholder="">
               </div>
             
               <div id="emerg-contact-mobile">
@@ -1071,7 +1067,7 @@
                   <option value="998">+998</option>          
                 </select>  
 
-                <input type="tel" name="emerg_contact_mobile_number" id="emerg_contact_mobile_number" minlength="7" maxlength="15"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Emergency contact mobile number must contain 7 or more numbers')" title="Emergency contact mobile number must contain 7 or more numbers" value="<%= data.emerg_contact_mobile_number %>" placeholder="">
+                <input type="tel" name="emerg_contact_mobile_number" id="emerg_contact_mobile_number" required minlength="7" maxlength="15" pattern="[0-9\s\-]{7,15}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Emergency contact mobile number must contain 7 or more numbers')" title="Emergency contact mobile number must contain 7 or more numbers" value="<%= data.emerg_contact_mobile_number %>" placeholder="">
               </div>            
             </fieldset>
           </div>
@@ -1089,7 +1085,7 @@
               </p>
             </label>
             
-            <input type="text" name="event_discovery" id="event_discovery"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Field must contain between 2 and 64 letters')" title="Field must contain between 2 and 64 letters" value="<%= data.event_discovery %>" placeholder="">      
+            <input type="text" name="event_discovery" id="event_discovery" pattern="[A-Za-z0-9\s\,\-]{2,64}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Field must contain between 2 and 64 letters')" title="Field must contain between 2 and 64 letters" value="<%= data.event_discovery %>" placeholder="">      
           </div>
 
           <hr class="two">          
@@ -1099,21 +1095,21 @@
             <p>Rules, policys, terms and conditions you must accept to participate. </p>
             <fieldset>
               <li>
-                <input type="checkbox" name="terms_conds" id="terms_conds" value="TRUE"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
-                <label for="terms_conds" class="required-bf"  class="valid-text">
+                <input type="checkbox" name="terms_conds" id="terms_conds" value="TRUE" required  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
+                <label for="terms_conds" class="required-bf"  class="valid-text invalid-field">
                   I acknowledge that I have read and accept Umsweswe Donsa Ultra Marathon's race entry <a href="/" target="_blank">terms and conditions</a>
                 </label>
         
               </li>
               <li>
-                <input type="checkbox" name="policy" id="policy" value="TRUE"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
+                <input type="checkbox" name="policy" id="policy" value="TRUE" required  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
                 <label for="policy" class="required-bf"  class="valid-text">
                   I acknowledge that I have read and accept Umsweswe Donsa Ultra Marathon's <a href="/" target="_blank">limitation of indemnity, liability, privacy and refund policies</a>
                   </label>
           
               </li>
               <li>
-                <input type="checkbox" name="communication" id="communication" value="TRUE"  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
+                <input type="checkbox" name="communication" id="communication" value="TRUE" required  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
                 <label for="communication" class="required-bf"  class="valid-text">
                   By entering and registering for a race for the Umsweswe Donsa Ultra Marathon, I agree to be contacted via email, sms and/or  whatsapp with important information about the race itself.
                 </label>
@@ -1159,14 +1155,40 @@
       </div>
     </div>
   </footer>
-<!-- <% %> -->
+
   <!-- scripts -->
   <script src="main.js"></script>
   <script>
-    const errrs = <%- JSON.stringify(errors) %>;
-    const yy = <%- JSON.stringify(data) %>;
-    console.log(yy)
-    console.log(errrs)
+    const errrsLisst = <%- JSON.stringify( errors ) %>;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const selAll = document.querySelectorAll( 'select[name]' );
+      const inpAll = document.querySelectorAll( 'input[name]' );
+      const txtaAll = document.querySelectorAll( 'textarea[name]' );
+      const evntAll = document.querySelectorAll( 'legend.event-category' );
+      const usrAll = document.querySelectorAll( 'div#usr-consent > p' )
+
+      const tst = new Set([...selAll, ...inpAll, ...txtaAll, ...evntAll, ...usrAll]);
+
+      tst.forEach( d => {
+        d.classList.remove('invalid-field', 'invalid-text')
+      })
+
+      errrsLisst.forEach( d => {
+        // link the error to the html element
+        const x = document.querySelector(`[name=${ d.path }]`);
+
+        if ( d.path === 'event_category' ) {
+          x.parentElement.parentElement.parentElement.parentElement.firstElementChild.classList.add('invalid-text');
+        }
+
+        if ( d.path === 'terms_conds' || d.path === 'policy' || d.path === 'communication') {
+          x.parentElement.parentElement.parentElement.firstElementChild.classList.add('invalid-text');
+        }
+
+        x.classList.add('invalid-field')
+      })
+    });
   </script>
 </body>
 </html>
