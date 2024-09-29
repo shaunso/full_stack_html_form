@@ -1,9 +1,10 @@
+/* styling for submission success page */
 :root {
   --primary-color: #4891ff;
   --drk-pri-color: #3478df;
   --light-color: hsl(216, 7%, 86%);
   --dark-color: #0a0808;
-  --asterisk: hsl(348, 89%, 48%);
+  --red: hsl(348, 89%, 48%);
   --grey: hsl(0, 0%, 20%);
   --white: hsl(15, 20%, 98%);
   --green: hsl(157, 68%, 41%);

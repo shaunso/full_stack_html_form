@@ -1,14 +1,17 @@
+/* styling template */
 :root {
   --primary-color: #4891ff;
   --light-color: hsl(216, 7%, 86%);
   --dark-color: #0a0808;
-  --asterisk: hsl(348, 89%, 48%);
+  --red: hsl(348, 89%, 48%);
+  --red-10: hsl(348, 87%, 75%);
   --grey: hsl(0, 0%, 20%);
   --white: hsl(15, 20%, 98%);
   --li-green: hsl(157, 68%, 41%);
   --green: hsl(148, 88%, 40%);
   --bg-card-container: rgba(240, 235, 226, 0.607);
   --font: "Poppins",Arial, Helvetica, sans-serif;
+  --fnt-600: 600;
 }
 
 * {
@@ -37,7 +40,6 @@ ul {
 }
 
 input[type="checkbox"] {
-/*  appearance: none; */
   width: 1rem;
   height: 1rem; 
   padding: 0;
@@ -47,7 +49,6 @@ input[type="checkbox"] {
 input[type="radio"] {
   width: 0.5rem;
   opacity: 0;
-  /* type */
 }
 
 /* header */
@@ -127,7 +128,7 @@ p.theme {
 }
 
 .container-form-instructions span {
-  color: var(--asterisk);
+  color: var(--red);
 }
 
 /* second horizontal rule */
@@ -381,19 +382,20 @@ select {
   font-family: var(-	-font);
   font-weight: 400;
   width: auto;
-  padding: 2px 4px 2px 10px;
+  padding: 2px 1.5rem 2px 1.2rem;
+  /* text-align: center; */
 }
 
 /* required class  */
 .required::after {
   content: '*';
-  color: var(--asterisk);
+  color: var(--red);
   display: inline;
 }
 
 .required-bf::before {
   content: '*';
-  color: var(--asterisk);
+  color: var(--red);
   display: inline;
 }
 
@@ -554,7 +556,6 @@ li.selected p {
   /* id */
   div#id select[name="id_doc_typ"] {
     margin-bottom: 0.75rem;
-    width: 92%;
   }
 
   /* mobile numbers */
@@ -643,5 +644,16 @@ li.selected p {
   button:hover {
     box-shadow: none;
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 398px) {
+  div#birthday {
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  div#birthday select {
+    text-align: center;
   }
 }

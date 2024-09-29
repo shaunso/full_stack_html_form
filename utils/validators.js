@@ -25,8 +25,8 @@ export const validators =
 
   // identity document type
   body('id_doc_typ').trim().escape().notEmpty().withMessage('Identity document type cannot be left blank').bail().custom( id => {
-    if ( id === "Zimbabwean ID" ||  id === "Passport") return id;
-    throw new Error('Select Zimbabwean ID or Passport');
+    if ( id === "ID" ||  id === "Passport") return id;
+    throw new Error('Select ID or Passport');
   }),
 
   // identity document number
