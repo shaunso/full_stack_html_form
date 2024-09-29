@@ -7,7 +7,6 @@ import { google } from 'googleapis';
 
 // middleware, sql config credentials & custom functions 
 import { validators } from '../utils/validators.js'
-import { validators2 } from '../utils/validators2.js'
 import { pool } from '../utils/database.js';
 import { calculateAge, consent, raceID } from '../utils/functions.js';
 
@@ -91,47 +90,5 @@ router.post( '/', validators, async ( req, res ) => {
     }
   })
 });
-
-// GET
-//user view entry landing page
-router.get('/view-entry', ( req, res ) => {
-  res.sendFile( path.join( process.cwd(), 'public', 'html', 'view_entry.html') );
-});
-
-// POST
-// user search
-router.post('/view-entry', validators2, ( req, res ) => {
-  const data = req.body;
-  const errors = validationResult( req );
-
-  const { race_id, lname, day, month, year } = req.body;
-  const dob = `${year}-${month}-${day}`;
-  const searchData = [ race_id, lname ];
-  const searchQuery = process.env.SEARCH_QUERY;
-  const sqlQuery = process.env.SEARCH_QUERY2;
-
-  // if there are errors with the user data
-  if ( !errors.isEmpty() ) {
-    return res.status(400).json({ data: data, errors: errors.array() });
-  }
-
-  // res.status(200).json(searchData)
-
-  // write the form data into the database
-  pool.execute( sqlQuery, searchData, ( err, result ) => {
-    if (err) {
-        //throw err
-        res.status(500).send('<h3> Something went wrong. <a href="/">Please resubmit<a><h3>');
-      };
-      
-    if ( result.length === 0 ) {
-      res.status(200).send('zero correct');
-    } else {
-      res.status(200).send('💫');
-    }
-      // on successful submission, success page sent in response to client post
-      console.log(result)
-    });
-})
 
 export default router;

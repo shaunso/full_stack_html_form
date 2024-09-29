@@ -169,7 +169,7 @@ button.btn-pri {
 
 button.btn-sec {
   background-color: var(--white);
-  color: var(--drk-pri-color);
+  color: var(--primary-color);
   border: var(--primary-color) solid 2px;
 }
 

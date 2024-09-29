@@ -14,7 +14,7 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css" integrity="sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- title -->
-    <title>Search for entry | Umsweswe Donsa Ultra Marathon 2025</title>
+    <title>Entry not found | Umsweswe Donsa Ultra Marathon 2025</title>
     <!-- css styling -->
     <style>
       header {
@@ -41,6 +41,22 @@
         bottom: 0;
         border-radius: 3px;
       }    
+
+      p#element::after {
+        content: 'Record not found for entry number';
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 1.5rem auto 0 auto;
+        padding: 2rem 0;
+        border-radius: 3px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        word-spacing: 0.375rem;
+        color: var(--white);
+        background-color: var(--red);
+      }
     </style>      
   </head>
 <body>
@@ -59,7 +75,7 @@
         <section>
           <div class="container-form-header">
             <p>
-              Search entry
+              Search for your entry
             </p>
           </div>
   
@@ -70,7 +86,7 @@
             <p>
               Fields marked with a star (<span>*</span>) are compulsory and have to be filled.
             </p>
-            <p>
+            <p id="element">
               Click 'Submit' to search for the entry.
             </p>
           </div>
@@ -78,7 +94,7 @@
   
         <!-- form -->
         <section>
-          <form action="/view-entry" method="post" autocomplete="off" id="reg-form" target="_self">
+          <form action="/search-entry" method="post" autocomplete="off" id="reg-form" target="_self">
             <fieldset>
               <!-- Race id -->
               <div id="race-id">

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../public/stylesheets/success/style.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css" integrity="sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- title -->
+    <title>Search for entry | Umsweswe Donsa Ultra Marathon 2025</title>
+    <!-- css styling -->
+    <style>
+      header {
+        padding: 1.5rem 3.5rem 0 3rem;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      header > h3  {
+        display: inline-block;
+        position: relative;
+        letter-spacing: 1.5px;
+        word-spacing: 6px;
+        font-size: 1.5rem;
+      }
+
+      header > h3::after  {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 0.25rem;
+        background-color: var(--dark-color);
+        left: 0;
+        bottom: 0;
+        border-radius: 3px;
+      }    
+
+      div.container-form-header > p {
+        letter-spacing: 1.5px;
+        word-spacing: 0.45rem;
+      }
+
+      input, textarea {
+        cursor: not-allowed;
+      }
+
+      #view-entry {
+        display: flex;
+        justify-content: space-between;
+      }
+      #view-entry > a {
+        width: auto;
+      }
+      #view-entry > a > button {
+        padding: 0 2rem;
+        font-size: 1rem;
+        letter-spacing: normal;
+        text-transform: none;
+      }
+
+      button.btn-sec {
+        color: var(--white);
+        background-color: var(--primary-color);
+        border: var(--primary) solid 2px;
+      }
+      button.btn-ter {
+        color: var(--white);
+        background-color: var(--dark-color);
+        border: var(--dark-color) solid 2px;
+      }
+
+      button.btn-sec:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
+        border: none;
+      }
+      button.btn-ter:hover {
+        background-color: var(--dark-color);
+        color: var(--white);
+        border: none;
+      }
+
+      @media (max-width: 675px) {
+          div#container {
+            margin: 1.75rem auto;
+          }            
+          #view-entry {
+            flex-direction: column-reverse;
+            padding: 0 1rem;
+          }
+        }
+    </style>      
+  </head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <h3>
+      <a href="/">
+        Umsweswe Donsa Ultra Marathon 2025
+      </a>
+    </h3>
+  </header>
+
+  <main>
+    <!-- form container -->
+    <div id="container">
+      <!-- container header -->
+      <section>
+        <div class="container-form-header">
+          <p style="font-weight: 500;">
+            Entry no: <span style="text-decoration: solid underline black 5px; font-weight: 600;"><%= data.race_id %></span>
+          </p>
+        </div>
+      </section>
+
+      <hr class="two">
+
+      <!-- form -->
+      <section>
+        <form autocomplete="off" id="reg-form" target="_self">
+          <fieldset>
+            <!-- First name -->
+            <div id="first-name">
+              <div>
+                <label for="fname">
+                  First name(s):
+                </label>
+
+                <input type="text" name="fname" id="fname" value="<%= data.fname %>" disabled>
+              </div>
+            </div>
+            
+            <!-- Last names -->
+            <div id="last-name">
+              <label for="lname">
+                Last name:
+              </label>
+      
+              <input type="text" name="lname" id="lname" value="<%= data.lname %>" disabled>
+            </div> 
+
+            <!-- Date of birth -->
+            <div id="date-of-birth">
+              <label for="dob">
+                Date of birth:
+
+                <input type="text" name="dob" id="dob" value="<%= data.dob.toLocaleDateString() %>" disabled>
+              </label>  
+            </div>
+
+            <!-- Gender -->
+            <div id="gender">
+              <label for="gender">
+                Gender:
+              </label>
+      
+              <input type="text" name="gender" id="gender" value="<%= data.gender %>" disabled>
+            </div>   
+            
+            <!-- ID -->
+            <div id="id">
+              <label for="id_doc_typ">
+                Identity document type:
+              </label>
+
+              <input type="text" name="id_doc_typ" id="id_doc_typ" value="<%= data.id_doc_typ %>" disabled>
+      
+              <label for="id_doc_no">
+                Identity document number:            
+              </label>
+
+              <input type="text" name="id_doc_no" id="id_doc_no" value="<%= data.id_doc_no %>" disabled>
+            </div>      
+            
+            <!-- Mobile number -->
+            <div id="mobile-number">
+              <label for="mobile-number">
+                Mobile number:
+              </label>
+      
+              <input type="text" name="mobile-number" id="mobile-number" value="<%= data.pri_mobile %>" disabled>
+            </div>
+        
+            <!-- Alternative number -->
+            <div id="alt-mobile-number">
+              <label for="alt_mobile_number">
+                Alternate mobile number:
+              </label>
+      
+              <input type="text" name="alt_mobile_number" id="alt_mobile_number" value="<%= data.alt_mobile_number %>" disabled>
+            </div>    
+            
+            <!-- Email -->
+            <div id="email">
+              <label for="email">
+                Email:
+              </label>
+      
+              <input type="email" name="email" id="email" value="<%= data.email %>" disabled> 
+            </div>
+
+            <!-- Address -->
+            <div id="address">
+              <label for="address">
+                Address:
+              </label>
+      
+              <textarea name="address" id="address" disabled><%= data.address %></textarea>
+            </div>
+          </fieldset>
+
+          <hr class="two">  
+          
+          <!-- Race category -->
+          <fieldset class="event-category">
+            <legend class="event-category">
+              Race you have entered:
+            </legend>
+
+            <div id="event-category">
+              <ul >
+                <li 
+                  <% if ( data.event_category === '250KM') { %> 
+                    class="radio-btn selected"  
+                  <% } else { %>
+                    class="radio-btn"
+                  <% } %>
+                >
+                  <% if ( data.event_category === '250KM') { %> 
+                    <input type="radio" name="event_category" id="250KM" value="250KM"  checked>
+                  <% } else { %>
+                    <input type="radio" name="event_category" id="250KM" value="250KM">
+                  <% } %>                
+                  <label for="250KM">
+                    <p>250KM</p>
+                    <p>$350</p>
+                  </label>
+                </li>
+
+                <li 
+                  <% if ( data.event_category === '161KM') { %> 
+                    class="radio-btn selected"  
+                  <% } else { %>
+                    class="radio-btn"
+                  <% } %>
+                >
+                  <% if ( data.event_category === '161KM') { %> 
+                    <input type="radio" name="event_category" id="161KM" value="161KM" checked> 
+                  <% } else { %>
+                    <input type="radio" name="event_category" id="161KM" value="161KM">
+                  <% } %>                
+                  <label for="161KM">
+                    <p>161KM</p>
+                    <p>$275</p>
+                  </label>
+                </li>
+
+                <li 
+                  <% if ( data.event_category === '100KM') { %> 
+                    class="radio-btn selected"  
+                  <% } else { %>
+                    class="radio-btn" 
+                  <% } %>
+                >    
+                  <% if ( data.event_category === '100KM') { %> 
+                    <input type="radio" name="event_category" id="100KM" value="100KM" checked>
+                  <% } else { %>
+                    <input type="radio" name="event_category" id="100KM" value="100KM">
+                  <% } %>                
+                  <label for="100KM">
+                    <p>100KM</p>         
+                    <p>$200</p>
+                  </label>
+                </li>
+              </ul
+            </div>
+          </fieldset>
+
+          <hr class="two">         
+          
+          <!-- Emergency contact -->
+          <div id="emerg-contact">
+            <fieldset>
+              <legend class="emerg-contact">Emergency contact details:</legend>
+              <div id="emerg-contact-name">
+                <label for="emerg_contact_name">
+                  Contact full name:
+                </label>
+        
+                <input type="text" name="emerg_contact_name" id="emerg_contact_name" value="<%= data.emerg_contact_name %>" disabled>
+              </div>
+            
+              <div id="emerg-contact-mobile">
+                <label for="emerg_contact_country_code_mobile">
+                  Contact mobile number:
+                </label>
+
+                <input type="text" name="emerg_contact_name" id="emerg_contact_name" value="<%= data.emerg_contact_mobile	 %>" disabled>
+              </div>            
+            </fieldset>
+          </div>
+          
+          <hr class="two">     
+
+          <!-- Event discovery -->
+          <div id="event-discovery">
+            <label for="event_discovery">
+              <p>
+                How did you hear about the 2025 Umsweswe Donsa Ultra Marathon?
+              </p>
+              <p class="text-sm-it">
+                (Facebook, Whatsapp, radio, TV, banner, word of mouth, advert, newspaper, previous participant, Google, etc.)
+              </p>
+            </label>
+            
+            <input type="text" name="event_discovery" id="event_discovery" value="<%= data.event_discovery %>" disabled>      
+          </div>
+
+          <hr class="two">                   
+        </section>
+      </form>
+      
+      <section>
+        <div class="card-btns" id="view-entry">
+          <a href="/modify-entry" target="_blank">
+            <button class="btn-ter">
+              Edit entry
+            </button>
+          </a>
+          
+          <a href="/" target="_blank">
+            <button class="btn-sec">
+              Submit new entry
+            </button>  
+          </a>
+        </div>        
+      </section>
+    </div>          
+  </main> 
+
+  <!-- footer -->
+  <footer>
+    <div id="container-footer">
+      <!-- icons won't load on iOS if ad blocker is on -->
+      <div id="socials">
+        <a href="https://www.facebook.com/">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>              
+      </div>
+
+      <p>
+        &copy; 2025 Umsweswe Donsa Ultra Marathon. All rights reserved.
+      </p>
+
+      <div id="contact">
+        <p>Contact</p>
+        <ul>
+          <li>
+            enquiries@udmarathon.co.zw
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- scripts -->              
+</body>
+</html>
