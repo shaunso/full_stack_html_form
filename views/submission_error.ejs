@@ -37,7 +37,7 @@
         <ul>
           <!-- function returns error in human readable form -->
           <% errors.forEach( d => { %>
-            <%- include('listItems', { d: d }); %>
+            <%- include('./partials/listItems', { d: d }); %>
           <% }); %>
         </ul>
       </div>
@@ -1189,7 +1189,7 @@
         if ( d.path === 'terms_conds' || d.path === 'policy' || d.path === 'communication') {
           x.parentElement.parentElement.parentElement.firstElementChild.classList.add('invalid-text');
         }
-        
+
         x.classList.add('invalid-field')
       })
     });
