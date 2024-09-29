@@ -15,7 +15,7 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css" integrity="sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- title -->
-    <title>Re-Entry Form | Umsweswe Donsa Ultra Marathon 2025</title>
+    <title>Error - Invalid form field values | Umsweswe Donsa Ultra Marathon 2025</title>
   </head>
 <body>
   <!-- header -->
@@ -797,7 +797,7 @@
                   <input type="radio" name="event_category" id="250KM" value="250KM" required>
                   <label for="250KM">
                     <p>250KM</p>
-                    <p>US$350</p>
+                    <p>$350</p>
                   </label>
                 </li>
 
@@ -811,7 +811,7 @@
                   <input type="radio" name="event_category" id="161KM" value="161KM">
                   <label for="161KM">
                     <p>161KM</p>
-                    <p>US$275</p>
+                    <p>$275</p>
                   </label>
                 </li>
 
@@ -825,7 +825,7 @@
                   <input type="radio" name="event_category" id="100KM" value="100KM">
                   <label for="100KM">
                     <p>100KM</p>         
-                    <p>US$200</p>
+                    <p>$200</p>
                   </label>
                 </li>
               </ul
@@ -1100,7 +1100,7 @@
             <fieldset>
               <li>
                 <input type="checkbox" name="terms_conds" id="terms_conds" value="TRUE" required  oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Select checkbox to submit entry')" title="Select checkbox to submit entry">
-                <label for="terms_conds" class="required-bf"  class="valid-text">
+                <label for="terms_conds" class="required-bf"  class="valid-text invalid-field">
                   I acknowledge that I have read and accept Umsweswe Donsa Ultra Marathon's race entry <a href="/" target="_blank">terms and conditions</a>
                 </label>
         
@@ -1159,14 +1159,40 @@
       </div>
     </div>
   </footer>
-<!-- <% %> -->
+
   <!-- scripts -->
   <script src="main.js"></script>
   <script>
-    const errrs = <%- JSON.stringify(errors) %>;
-    const yy = <%- JSON.stringify(data) %>;
-    console.log(yy)
-    console.log(errrs)
+    const errrsLisst = <%- JSON.stringify( errors ) %>;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const selAll = document.querySelectorAll( 'select[name]' );
+      const inpAll = document.querySelectorAll( 'input[name]' );
+      const txtaAll = document.querySelectorAll( 'textarea[name]' );
+      const evntAll = document.querySelectorAll( 'legend.event-category' );
+      const usrAll = document.querySelectorAll( 'div#usr-consent > p' )
+
+      const tst = new Set([...selAll, ...inpAll, ...txtaAll, ...evntAll, ...usrAll]);
+
+      tst.forEach( d => {
+        d.classList.remove('invalid-field', 'invalid-text')
+      })
+
+      errrsLisst.forEach( d => {
+        // link the error to the html element
+        const x = document.querySelector(`[name=${ d.path }]`);
+
+        if ( d.path === 'event_category' ) {
+          x.parentElement.parentElement.parentElement.parentElement.firstElementChild.classList.add('invalid-text');
+        }
+
+        if ( d.path === 'terms_conds' || d.path === 'policy' || d.path === 'communication') {
+          x.parentElement.parentElement.parentElement.firstElementChild.classList.add('invalid-text');
+        }
+        
+        x.classList.add('invalid-field')
+      })
+    });
   </script>
 </body>
 </html>
