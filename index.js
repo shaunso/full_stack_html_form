@@ -2,6 +2,8 @@ import express from 'express';
 import 'dotenv/config';
 
 import homeRouter from './routes/index.js'
+import searchRouter from './routes/searchEntry.js'
+import updateRouter from './routes/updateEntry.js'
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -13,6 +15,11 @@ app.set('view engine', 'ejs')
 
 // routes
 app.use('/', homeRouter);
+app.use('/search-entry', searchRouter);
+
+app.get( '/modify-entry', ( req, res ) => {
+  res.status(200).render('editEntry', { data: [], errors: []})
+})
 
 // page handles when client requests an invalid endpoint
 app.all('*', (req, res) => {
