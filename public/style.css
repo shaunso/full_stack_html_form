@@ -202,9 +202,11 @@ label[for="number"], label[for="alt_mobile_number"], label[for="emerg_contact_co
 }
 
 input[id="number"], input[id="alt_mobile_number"], input[id="emerg_contact_mobile_number"] {
-  width: 75%;
+  width: 100%;
   flex-grow: 1;
+  margin-top: 0.5rem;
 }
+
 
 /* address */
 textarea {
@@ -570,6 +572,7 @@ li.selected p {
 
   input[id="number"], input[id="alt_mobile_number"], input[id="emerg_contact_mobile_number"] {
     width: 100%;
+    margin-top: 0;
   }
 
   /* emergency contact */

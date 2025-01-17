@@ -15,7 +15,7 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css" integrity="sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- title -->
-    <title>Search for entry | Umsweswe Donsa Ultra Marathon 2025</title>
+    <title>View entry | Umsweswe Donsa Ultra Marathon 2025</title>
     <!-- css styling -->
     <style>
       header {
@@ -116,7 +116,7 @@
       <section>
         <div class="container-form-header">
           <p style="font-weight: 500;">
-            Entry no: <span style="text-decoration: solid underline black 5px; font-weight: 600;"><%= data.race_id %></span>
+            Entry no: <span><%= data.race_id %></span>
           </p>
         </div>
       </section>
@@ -186,7 +186,7 @@
                 Mobile number:
               </label>
       
-              <input type="text" name="mobile-number" id="mobile-number" value="<%= data.pri_mobile %>" disabled>
+              <input type="text" name="gender" id="mobile-number" value="<%= data.pri_mobile %>" disabled>
             </div>
         
             <!-- Alternative number -->
